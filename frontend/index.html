@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Signal — Applicant Trust Review</title>
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --border: #e6ecf2;
+      --text: #0a1a2b;
+      --text-muted: #5b6d82;
+      --navy: #0c2440;
+      --blue: #2563eb;
+      --blue-soft: #eef4ff;
+      --red: #b91c1c;
+      --red-soft: #fef2f2;
+      --amber: #b45309;
+      --amber-soft: #fffbeb;
+      --green: #15803d;
+      --green-soft: #f0fdf4;
+      --purple: #6b21a8;
+      --purple-soft: #faf5ff;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.02), 0 1px 4px rgba(0,0,0,0.03);
+      --shadow-md: 0 6px 16px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,0.06), 0 6px 16px rgba(0,0,0,0.03);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes orbit { from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); } to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); } }
+    @keyframes orbitReverse { from { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); } to { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); } }
+    @keyframes pulseRing { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.6); opacity: 0; } }
+    @keyframes signalWave { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(2.2); opacity: 0; } }
+    .animate-up { animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .animate-scale { animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .delay-1 { animation-delay: 0.06s; }
+    .delay-2 { animation-delay: 0.12s; }
+
+    .header {
+      background: linear-gradient(135deg, #0a1a2b 0%, #0c2440 50%, #0f2a4a 100%);
+      color: white;
+      padding: 18px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px);
+      background-color: rgba(10,26,43,0.92);
+    }
+    .header-brand { display: flex; align-items: center; gap: 14px; }
+    .signal-logo { width: 40px; height: 40px; position: relative; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .signal-logo .core {
+      width: 12px; height: 12px;
+      background: linear-gradient(135deg, #60a5fa, #2563eb);
+      border-radius: 50%; position: relative; z-index: 2;
+      box-shadow: 0 0 12px rgba(59,130,246,0.6);
+    }
+    .signal-logo .wave {
+      position: absolute; border-radius: 50%;
+      border: 2px solid rgba(59,130,246,0.5);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 12px; height: 12px;
+      animation: signalWave 2.4s ease-out infinite;
+    }
+    .signal-logo .wave:nth-child(2) { animation-delay: 0.8s; }
+    .signal-logo .wave:nth-child(3) { animation-delay: 1.6s; }
+    .header-brand h1 {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em; margin: 0;
+      background: linear-gradient(to right, #ffffff, #c7d9f0);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-brand p { font-size: 12px; color: #8ba3c0; font-weight: 400; margin: 0; }
+    .header-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 6px 16px; border-radius: 40px;
+      font-size: 12px; color: #b8cde0; font-weight: 500;
+      backdrop-filter: blur(6px);
+    }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 28px 24px 64px; }
+
+    .welcome-section {
+      background: linear-gradient(145deg, #0c2440 0%, #123a5e 50%, #1a4a7a 100%);
+      border-radius: var(--radius);
+      padding: 48px 44px; margin-bottom: 28px;
+      color: white; position: relative; overflow: hidden;
+      box-shadow: var(--shadow-lg); min-height: 280px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    }
+    .welcome-section::before {
+      content: ''; position: absolute; top: -60%; right: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .welcome-section::after {
+      content: ''; position: absolute; bottom: -40%; left: -5%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .welcome-content { position: relative; z-index: 1; flex: 1; }
+    .welcome-content h2 {
+      font-size: 32px; font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: 12px; line-height: 1.2;
+      background: linear-gradient(to right, #ffffff, #d4e4f7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .welcome-content p {
+      font-size: 15px; color: #a8c4e0; max-width: 520px;
+      line-height: 1.7; margin-bottom: 24px;
+    }
+    .welcome-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+    .welcome-stat { display: flex; flex-direction: column; }
+    .welcome-stat .number { font-size: 24px; font-weight: 800; color: white; letter-spacing: -0.02em; }
+    .welcome-stat .label { font-size: 12px; color: #7d9bb8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .welcome-visual { position: relative; z-index: 1; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .orbit-system { position: relative; width: 200px; height: 200px; display: flex; align-items: center; justify-content: center; }
+    .orbit-core {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #60a5fa, #2563eb);
+      border-radius: 50%; position: relative; z-index: 5;
+      box-shadow: 0 0 30px rgba(59,130,246,0.5), 0 0 60px rgba(59,130,246,0.2);
+    }
+    .orbit-ring { position: absolute; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.08); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .orbit-ring-1 { width: 80px; height: 80px; }
+    .orbit-ring-2 { width: 130px; height: 130px; border-color: rgba(255,255,255,0.06); }
+    .orbit-ring-3 { width: 180px; height: 180px; border-color: rgba(255,255,255,0.04); }
+    .orbit-particle { position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; border-radius: 50%; margin-top: -4px; margin-left: -4px; transform-origin: 0 0; }
+    .orbit-particle.p1 { --orbit-radius: 40px; background: #60a5fa; box-shadow: 0 0 10px rgba(96,165,250,0.8); animation: orbit 6s linear infinite; }
+    .orbit-particle.p2 { --orbit-radius: 65px; background: #a78bfa; box-shadow: 0 0 10px rgba(167,139,250,0.8); animation: orbitReverse 8s linear infinite; }
+    .orbit-particle.p3 { --orbit-radius: 90px; background: #34d399; box-shadow: 0 0 10px rgba(52,211,153,0.8); animation: orbit 10s linear infinite; }
+    .orbit-particle.p4 { --orbit-radius: 40px; background: #f472b6; box-shadow: 0 0 10px rgba(244,114,182,0.8); animation: orbitReverse 7s linear infinite; animation-delay: -3s; }
+    .orbit-particle.p5 { --orbit-radius: 65px; background: #fbbf24; box-shadow: 0 0 10px rgba(251,191,36,0.8); animation: orbit 9s linear infinite; animation-delay: -4s; }
+    .pulse-ring {
+      position: absolute; border-radius: 50%;
+      border: 1.5px solid rgba(59,130,246,0.3);
+      top: 50%; left: 50%; width: 28px; height: 28px;
+      transform: translate(-50%, -50%);
+      animation: pulseRing 3s ease-out infinite;
+    }
+    .pulse-ring:nth-child(2) { animation-delay: 1s; }
+    .pulse-ring:nth-child(3) { animation-delay: 2s; }
+
+    .upload-card {
+      background: var(--surface); border-radius: var(--radius);
+      box-shadow: var(--shadow-md); padding: 32px 36px; margin-bottom: 24px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+    }
+    .upload-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-1px); }
+    .upload-icon-box {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #eef4ff, #dbeafe);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .upload-icon-box svg { width: 26px; height: 26px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .upload-info { flex: 1; min-width: 200px; }
+    .upload-info h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.01em; }
+    .upload-info p { font-size: 13.5px; color: var(--text-muted); margin-bottom: 10px; }
+    .file-input-wrapper { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .file-input-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #f1f5f9; padding: 9px 18px; border-radius: 40px;
+      font-size: 13.5px; font-weight: 600; color: var(--navy);
+      cursor: pointer; transition: background 0.15s ease, border-color 0.15s ease;
+      border: 1px solid transparent;
+    }
+    .file-input-label:hover { background: #e6edf5; border-color: #cbd5e1; }
+    .file-input-label svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    input[type="file"] { display: none; }
+    .file-name-preview {
+      font-size: 12.5px; color: var(--text-muted); background: #f8fafc;
+      padding: 6px 14px; border-radius: 40px; border: 1px solid var(--border);
+      max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      font-family: var(--font-mono);
+    }
+    .btn-primary {
+      background: var(--blue); color: white; border: none;
+      padding: 12px 28px; border-radius: 40px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 10px rgba(37,99,235,0.25);
+      letter-spacing: -0.01em;
+      display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background: #1d4ed8; box-shadow: 0 6px 20px rgba(37,99,235,0.35); transform: translateY(-1px);
+    }
+    .btn-primary:active:not(:disabled) { transform: scale(0.98); }
+    .btn-primary:disabled { background: #94a3b8; box-shadow: none; cursor: not-allowed; opacity: 0.7; }
+
+    .jd-card {
+      background: var(--surface); border-radius: var(--radius);
+      box-shadow: var(--shadow-sm); padding: 24px 28px; margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .jd-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .jd-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+    .jd-card textarea {
+      width: 100%; min-height: 110px;
+      padding: 12px 14px; border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans); font-size: 13.5px;
+      color: var(--text); background: #fbfdff;
+      resize: vertical; transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .jd-card textarea:focus {
+      outline: none; border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+
+    .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; display: none; }
+    .dashboard-grid.visible { display: grid; animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .chart-card {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow-md);
+      padding: 24px 28px; transition: box-shadow 0.25s ease;
+    }
+    .chart-card:hover { box-shadow: var(--shadow-lg); }
+    .chart-card h3 {
+      font-size: 13px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .chart-card h3 svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.6; }
+    .chart-content { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .pie-chart-container { position: relative; width: 140px; height: 140px; flex-shrink: 0; }
+    .pie-chart-container svg { width: 140px; height: 140px; transform: rotate(-90deg); }
+    .pie-segment { fill: none; stroke-width: 18; stroke-linecap: butt; transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .pie-center-label { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    .pie-center-label .big { font-size: 24px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+    .pie-center-label .small { font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .chart-legend { display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 140px; }
+    .legend-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-label { flex: 1; font-weight: 500; }
+    .legend-value { font-weight: 700; color: var(--navy); font-size: 13px; font-variant-numeric: tabular-nums; }
+    .legend-bar { width: 100%; height: 6px; background: #f1f5f9; border-radius: 40px; margin-top: 2px; overflow: hidden; }
+    .legend-bar-fill { height: 100%; border-radius: 40px; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    .summary-bar {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 16px 22px; margin-bottom: 24px;
+      border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+      font-size: 14px; color: var(--text-muted);
+      display: none; align-items: center; gap: 8px; flex-wrap: wrap;
+      animation: slideDown 0.4s ease both;
+    }
+    .summary-bar.visible { display: flex; }
+    .summary-bar b { color: var(--navy); font-weight: 700; }
+    .summary-bar .pill { background: var(--blue-soft); color: var(--blue); padding: 2px 10px; border-radius: 40px; font-size: 12px; font-weight: 600; }
+
+    .table-wrapper {
+      background: var(--surface); border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow-md);
+      overflow: hidden; margin-bottom: 24px; display: none;
+    }
+    .table-wrapper.visible { display: block; animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both 0.1s; }
+    .results-table { width: 100%; border-collapse: collapse; }
+    .results-table th {
+      text-align: left; padding: 16px 20px; background: #fafcff;
+      color: var(--text-muted); font-weight: 600; font-size: 11.5px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    .results-table td { padding: 16px 20px; border-bottom: 1px solid var(--border); font-size: 14px; vertical-align: middle; }
+    .results-table tr:last-child td { border-bottom: none; }
+    .candidate-row { cursor: pointer; transition: background 0.12s ease; }
+    .candidate-row:hover { background: #fafcff; }
+    .candidate-name { font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+    .candidate-avatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, #eef4ff, #dbeafe);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--blue); flex-shrink: 0;
+    }
+    .file-name {
+      color: var(--text-muted); font-size: 13px; font-family: var(--font-mono);
+      background: #f8fafc; padding: 3px 10px; border-radius: 6px;
+      display: inline-block; max-width: 200px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .badge-group { display: flex; gap: 6px; flex-wrap: wrap; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 12px; border-radius: 40px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.01em;
+      white-space: nowrap; border: 1px solid transparent;
+    }
+    .badge-clean { background: var(--green-soft); color: var(--green); border-color: #bbf7d0; }
+    .badge-injection { background: var(--red-soft); color: var(--red); border-color: #fecaca; }
+    .badge-duplication { background: var(--amber-soft); color: var(--amber); border-color: #fde68a; }
+    .badge-consistency { background: var(--purple-soft); color: var(--purple); border-color: #e9d5ff; }
+    .badge-signal { background: var(--blue-soft); color: var(--blue); border-color: #bfdbfe; }
+
+    .evidence-row { display: none; background: #f8fafc; }
+    .evidence-row.open { display: table-row; animation: fadeIn 0.25s ease both; }
+    .evidence-row td { padding: 0; border-bottom: 1px solid var(--border); }
+    .evidence-panel { padding: 24px 28px; background: #ffffff; border-left: 3px solid var(--blue); }
+    .evidence-grid { display: flex; flex-direction: column; gap: 16px; }
+    .evidence-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 18px; box-shadow: var(--shadow-sm); }
+    .evidence-block h4 {
+      margin: 0 0 10px; font-size: 12px; text-transform: uppercase;
+      letter-spacing: 0.04em; font-weight: 700;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .evidence-block h4.injection { color: var(--red); }
+    .evidence-block h4.dup { color: var(--amber); }
+    .evidence-block h4.consistency { color: var(--purple); }
+    .hl {
+      background: #fee2e2; padding: 2px 8px; border-radius: 6px;
+      font-family: var(--font-mono); font-size: 12.5px; color: #991b1b;
+      word-break: break-word; display: inline-block; margin-bottom: 4px;
+    }
+    .hl-dup { background: #fef3c7; padding: 2px 8px; border-radius: 6px; font-family: var(--font-mono); font-size: 12.5px; color: #92400e; font-weight: 600; }
+    .clean-msg { color: var(--green); font-size: 14px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+    .preview-text {
+      margin-top: 10px; font-size: 13px; color: var(--text-muted);
+      background: #f1f5f9; padding: 12px 14px; border-radius: var(--radius-sm);
+      font-family: var(--font-mono); line-height: 1.6; border-left: 3px solid #cbd5e1;
+    }
+    .pill {
+      background: #eef2f7; color: var(--navy);
+      padding: 2px 8px; border-radius: 40px;
+      font-size: 11px; font-weight: 600;
+      display: inline-block; margin-right: 4px;
+    }
+
+    .footer-note {
+      font-size: 12.5px; color: var(--text-muted); text-align: center;
+      margin-top: 40px; padding-top: 28px;
+      border-top: 1px solid var(--border);
+      max-width: 720px; margin-left: auto; margin-right: auto;
+      line-height: 1.8;
+    }
+    .footer-note span {
+      background: #f1f5f9; padding: 2px 10px; border-radius: 40px;
+      font-weight: 500; color: var(--navy); margin: 0 2px;
+    }
+
+    @media (max-width: 820px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .welcome-section { flex-direction: column; padding: 32px 28px; text-align: center; }
+      .welcome-content p { max-width: 100%; }
+      .welcome-stats { justify-content: center; }
+      .welcome-visual { display: none; }
+      .upload-card { flex-direction: column; text-align: center; }
+      .upload-info { min-width: auto; }
+      .file-input-wrapper { justify-content: center; }
+      .header { padding: 14px 20px; }
+      .container { padding: 20px 16px 48px; }
+    }
+    @media (max-width: 500px) {
+      .welcome-content h2 { font-size: 24px; }
+      .file-input-wrapper { flex-direction: column; align-items: stretch; }
+      .file-input-label { justify-content: center; }
+      .chart-content { flex-direction: column; align-items: center; }
+      .chart-legend { width: 100%; }
+    }
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-brand">
+    <div class="signal-logo">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="core"></div>
+    </div>
+    <div>
+      <h1>Signal</h1>
+      <p>Trust layer for the hiring funnel — mocked ATS view</p>
+    </div>
+  </div>
+  <div class="header-badge">v3.0 · automatic verification</div>
+</header>
+
+<div class="container">
+
+  <div class="welcome-section animate-up">
+    <div class="welcome-content">
+      <h2>Welcome to Signal</h2>
+      <p>
+        Upload a batch of resumes to detect hidden injections, duplicated content across applicants,
+        timeline inconsistencies, and unverifiable employer claims — without ever judging writing style.
+      </p>
+      <div class="welcome-stats">
+        <div class="welcome-stat">
+          <span class="number" id="welcomeCount">0</span>
+          <span class="label">Resumes</span>
+        </div>
+        <div class="welcome-stat">
+          <span class="number" id="welcomeFlagged">0</span>
+          <span class="label">Flagged</span>
+        </div>
+        <div class="welcome-stat">
+          <span class="number" id="welcomeRate">0%</span>
+          <span class="label">Flag rate</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="welcome-visual">
+      <div class="orbit-system">
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-ring orbit-ring-3"></div>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring"></div>
+        <div class="orbit-particle p1"></div>
+        <div class="orbit-particle p2"></div>
+        <div class="orbit-particle p3"></div>
+        <div class="orbit-particle p4"></div>
+        <div class="orbit-particle p5"></div>
+        <div class="orbit-core"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="upload-card animate-up delay-1">
+    <div class="upload-icon-box">
+      <svg viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="17 8 12 3 7 8" />
+        <line x1="12" y1="3" x2="12" y2="15" />
+      </svg>
+    </div>
+    <div class="upload-info">
+      <h3>Upload resume batch</h3>
+      <p>Select one or more PDF or DOCX files. Employer verification runs automatically from the resume text.</p>
+      <div class="file-input-wrapper">
+        <label for="fileInput" class="file-input-label">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Choose files
+        </label>
+        <input type="file" id="fileInput" multiple accept=".pdf,.docx" />
+        <span class="file-name-preview" id="filePreview">No files selected</span>
+      </div>
+    </div>
+    <button id="analyzeBtn" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Analyze batch
+    </button>
+  </div>
+
+  <div class="jd-card animate-up delay-2">
+    <h3>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      Job description (optional)
+    </h3>
+    <p>Paste a job description to enable match scoring for every resume. Purely a reading aid — does not affect authenticity verdicts.</p>
+    <textarea id="jdInput" placeholder="Paste the job description here..."></textarea>
+  </div>
+
+  <div class="dashboard-grid" id="dashboardGrid">
+    <div class="chart-card animate-scale delay-1">
+      <h3>
+        <svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+        Overall disposition
+      </h3>
+      <div class="chart-content">
+        <div class="pie-chart-container">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#f1f5f9" stroke-width="18" />
+            <circle id="pieFlagged" class="pie-segment" cx="50" cy="50" r="45" fill="none" stroke="#ef4444" stroke-width="18" stroke-dasharray="283" stroke-dashoffset="283" />
+            <circle id="pieClean" class="pie-segment" cx="50" cy="50" r="45" fill="none" stroke="#22c55e" stroke-width="18" stroke-dasharray="283" stroke-dashoffset="283" />
+          </svg>
+          <div class="pie-center-label">
+            <div class="big" id="pieCenterCount">0</div>
+            <div class="small">total</div>
+          </div>
+        </div>
+        <div class="chart-legend" id="overallLegend"></div>
+      </div>
+    </div>
+
+    <div class="chart-card animate-scale delay-2">
+      <h3>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Flag breakdown
+      </h3>
+      <div class="chart-content">
+        <div class="pie-chart-container">
+          <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#f1f5f9" stroke-width="18" />
+            <circle id="pieInjection" class="pie-segment" cx="50" cy="50" r="45" fill="none" stroke="#ef4444" stroke-width="18" stroke-dasharray="283" stroke-dashoffset="283" />
+            <circle id="pieDup" class="pie-segment" cx="50" cy="50" r="45" fill="none" stroke="#f59e0b" stroke-width="18" stroke-dasharray="283" stroke-dashoffset="283" />
+            <circle id="pieConsistency" class="pie-segment" cx="50" cy="50" r="45" fill="none" stroke="#a855f7" stroke-width="18" stroke-dasharray="283" stroke-dashoffset="283" />
+          </svg>
+          <div class="pie-center-label">
+            <div class="big" id="pieFlagCount">0</div>
+            <div class="small">flagged</div>
+          </div>
+        </div>
+        <div class="chart-legend" id="typeLegend"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="summaryBar" class="summary-bar"></div>
+
+  <div class="table-wrapper" id="tableWrapper">
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Candidate</th>
+          <th>File</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="resultsBody"></tbody>
+    </table>
+  </div>
+
+  <div class="footer-note">
+    <span>Injection</span> catches manipulation. <span>Duplication</span> catches reuse.
+    <span>Consistency</span> catches carelessness. <span>Employer check</span> verifies claims against public records.
+    None of them ever ask whether AI helped write the resume — because that's the wrong question.
+  </div>
+</div>
+
+<script>
+  const API_BASE = "http://localhost:8000";
+
+  const fileInput = document.getElementById("fileInput");
+  const filePreview = document.getElementById("filePreview");
+  fileInput.addEventListener("change", () => {
+    const files = fileInput.files;
+    if (!files.length) {
+      filePreview.textContent = "No files selected";
+      return;
+    }
+    filePreview.textContent = files.length === 1 ? files[0].name : `${files.length} files selected`;
+  });
+
+  document.getElementById("analyzeBtn").addEventListener("click", async () => {
+    const input = document.getElementById("fileInput");
+    if (!input.files.length) {
+      alert("Choose one or more resume files first.");
+      return;
+    }
+
+    const formData = new FormData();
+    for (const f of input.files) formData.append("files", f);
+    const jd = document.getElementById("jdInput").value.trim();
+    if (jd) formData.append("jd_text", jd);
+
+    const btn = document.getElementById("analyzeBtn");
+    btn.disabled = true;
+    btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Analyzing...`;
+
+    try {
+      const res = await fetch(`${API_BASE}/analyze-batch`, { method: "POST", body: formData });
+      const data = await res.json();
+      render(data);
+    } catch (e) {
+      alert("Could not reach backend. Is uvicorn running on port 8000?\n" + e);
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> Analyze batch`;
+    }
+  });
+
+  function render(data) {
+    const resumes = data.resumes;
+    const total = resumes.length;
+    const flagged = resumes.filter(r => r.overall_flagged).length;
+    const clean = total - flagged;
+
+    document.getElementById("welcomeCount").textContent = total;
+    document.getElementById("welcomeFlagged").textContent = flagged;
+    document.getElementById("welcomeRate").textContent = total ? Math.round((flagged / total) * 100) + "%" : "0%";
+
+    document.getElementById("dashboardGrid").classList.add("visible");
+    document.getElementById("tableWrapper").classList.add("visible");
+
+    animatePie("pieFlagged", flagged / total, 283);
+    animatePie("pieClean", clean / total, 283, flagged / total);
+    document.getElementById("pieCenterCount").textContent = total;
+
+    const overallLegend = document.getElementById("overallLegend");
+    overallLegend.innerHTML = `
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#22c55e;"></div>
+        <div class="legend-label">Clean</div>
+        <div class="legend-value">${clean}</div>
+      </div>
+      <div class="legend-bar"><div class="legend-bar-fill" style="width:${total ? (clean/total)*100 : 0}%; background:#22c55e;"></div></div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#ef4444;"></div>
+        <div class="legend-label">Flagged</div>
+        <div class="legend-value">${flagged}</div>
+      </div>
+      <div class="legend-bar"><div class="legend-bar-fill" style="width:${total ? (flagged/total)*100 : 0}%; background:#ef4444;"></div></div>
+    `;
+
+    const injCount = resumes.filter(r => r.injection.flagged).length;
+    const dupCount = resumes.filter(r => r.duplication.flagged).length;
+    const conCount = resumes.filter(r => r.consistency.flagged).length;
+    const verCount = resumes.filter(r => r.authenticity?.summary?.discrepancy > 0).length;
+    const totalFlags = injCount + dupCount + conCount || 1;
+
+    animatePie("pieInjection", injCount / totalFlags, 283);
+    animatePie("pieDup", dupCount / totalFlags, 283, injCount / totalFlags);
+    animatePie("pieConsistency", conCount / totalFlags, 283, (injCount + dupCount) / totalFlags);
+
+    document.getElementById("pieFlagCount").textContent = flagged;
+
+    const typeLegend = document.getElementById("typeLegend");
+    const types = [
+      { label: "Injection", count: injCount, color: "#ef4444" },
+      { label: "Duplicate", count: dupCount, color: "#f59e0b" },
+      { label: "Timeline", count: conCount, color: "#a855f7" },
+      { label: "Employer", count: verCount, color: "#dc2626" },
+    ];
+    typeLegend.innerHTML = types.map(t => `
+      <div class="legend-item">
+        <div class="legend-dot" style="background:${t.color};"></div>
+        <div class="legend-label">${t.label}</div>
+        <div class="legend-value">${t.count}</div>
+      </div>
+      <div class="legend-bar"><div class="legend-bar-fill" style="width:${totalFlags ? (t.count/totalFlags)*100 : 0}%; background:${t.color};"></div></div>
+    `).join("");
+
+    const summaryBar = document.getElementById("summaryBar");
+    summaryBar.classList.add("visible");
+    summaryBar.innerHTML = `
+      <span>📋</span>
+      <b>${flagged}</b> of <b>${total}</b> applicants flagged for review.
+      <span class="pill">file manipulation</span>
+      <span class="pill">cross-candidate duplication</span>
+      <span class="pill">timeline consistency</span>
+      <span class="pill">employer verification</span>
+      <span style="color:var(--text-muted); font-size:13px;">— not writing style</span>
+    `;
+
+    const body = document.getElementById("resultsBody");
+    body.innerHTML = "";
+
+    resumes.forEach((r, idx) => {
+      const row = document.createElement("tr");
+      row.className = "candidate-row";
+      row.style.animation = `fadeInUp 0.35s cubic-bezier(0.16,1,0.3,1) both ${idx * 0.04}s`;
+      row.onclick = (e) => {
+        if (e.target.closest('.evidence-row')) return;
+        toggleEvidence(idx);
+      };
+
+      let badges = "";
+      if (!r.overall_flagged) {
+        badges = `<span class="badge badge-clean">✓ Clean</span>`;
+      } else {
+        if (r.injection.flagged) badges += `<span class="badge badge-injection">Injection</span>`;
+        if (r.duplication.flagged) badges += `<span class="badge badge-duplication">Duplicate</span>`;
+        if (r.consistency.flagged) badges += `<span class="badge badge-consistency">Timeline</span>`;
+        if (r.authenticity?.summary?.discrepancy > 0) badges += `<span class="badge badge-injection">Employer</span>`;
+      }
+      if (r.signal && r.signal.archetypes && r.signal.archetypes.length) {
+        badges += `<span class="badge badge-signal">${escapeHtml(r.signal.archetypes[0].name)}</span>`;
+      }
+
+      const initials = r.name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+
+      row.innerHTML = `
+        <td>
+          <div class="candidate-name">
+            <div class="candidate-avatar">${initials}</div>
+            ${escapeHtml(r.name)}
+          </div>
+        </td>
+        <td><span class="file-name" title="${escapeHtml(r.filename)}">${escapeHtml(r.filename)}</span></td>
+        <td><div class="badge-group">${badges}</div></td>
+      `;
+      body.appendChild(row);
+
+      const evidenceRow = document.createElement("tr");
+      evidenceRow.className = "evidence-row";
+      evidenceRow.id = `evidence-${idx}`;
+      evidenceRow.innerHTML = `<td colspan="3"><div class="evidence-panel">${buildEvidenceHTML(r)}</div></td>`;
+      body.appendChild(evidenceRow);
+    });
+  }
+
+  function animatePie(id, fraction, circumference, offsetFraction) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const offset = circumference - (fraction * circumference) + (offsetFraction || 0) * circumference;
+    el.style.strokeDashoffset = Math.max(0, Math.min(circumference, offset));
+  }
+
+  function toggleEvidence(idx) {
+    const row = document.getElementById(`evidence-${idx}`);
+    if (row) row.classList.toggle("open");
+  }
+
+  function buildEvidenceHTML(r) {
+    const sections = [];
+
+    // --- Injection ---
+    if (r.injection.flagged) {
+      sections.push(`
+        <div class="evidence-block">
+          <h4 class="injection">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Hidden injection text detected
+          </h4>
+          ${r.injection.matches.map(m => `
+            <div style="margin-bottom:10px;">
+              <span class="hl">${escapeHtml(m.text)}</span>
+              <div style="font-size:12px; color:#64748b; margin-top:6px;">⚠ ${escapeHtml(m.reason)}</div>
+            </div>
+          `).join("")}
+        </div>
+      `);
+    }
+
+    // --- Duplication ---
+    if (r.duplication.flagged) {
+      sections.push(`
+        <div class="evidence-block">
+          <h4 class="dup">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="12" y1="8" x2="12" y2="16"/></svg>
+            Duplicate content across applicants
+          </h4>
+          ${r.duplication.matches.map(m => `
+            <div style="font-size:14px; margin-bottom:6px;">
+              Matches <b>${escapeHtml(m.name_a === r.name ? m.name_b : m.name_a)}</b>
+              — similarity: <span class="hl-dup">${(m.similarity * 100).toFixed(1)}%</span>
+            </div>
+          `).join("")}
+        </div>
+      `);
+    }
+
+    // --- Timeline ---
+    if (r.consistency.flagged) {
+      sections.push(`
+        <div class="evidence-block">
+          <h4 class="consistency">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Timeline / consistency issue
+          </h4>
+          ${r.consistency.flags.map(f => `<div style="font-size:14px; margin-bottom:4px;">${escapeHtml(f.detail)}</div>`).join("")}
+        </div>
+      `);
+    }
+
+    // --- Employer verification ---
+    if (r.authenticity && r.authenticity.checks && r.authenticity.checks.length) {
+      const a = r.authenticity;
+      const statusColor = s => s === "corroborated" ? "var(--green)"
+                              : s === "discrepancy" ? "var(--red)"
+                              : "var(--amber)";
+      sections.push(`
+        <div class="evidence-block">
+          <h4 style="color:#2563eb;">Employer verification</h4>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px;">
+            <span class="pill" style="background:#f0fdf4; color:var(--green);">✓ ${a.summary.corroborated} corroborated</span>
+            <span class="pill" style="background:#fffbeb; color:var(--amber);">⚠ ${a.summary.unverified} unverified</span>
+            <span class="pill" style="background:#fef2f2; color:var(--red);">! ${a.summary.discrepancy} discrepancy</span>
+          </div>
+          ${a.checks.map(c => `
+            <div style="padding:10px 0; border-top:1px solid #eef2f7;">
+              <div style="font-weight:650;">
+                ${escapeHtml(c.check)}
+                <span style="color:${statusColor(c.status)}; font-size:12px; text-transform:uppercase; margin-left:8px;">
+                  ${escapeHtml(c.status)}
+                </span>
+              </div>
+              <div style="font-size:13px; color:#64748b; margin-top:3px;">${escapeHtml(c.detail)}</div>
+              ${c.evidence && c.evidence.length ? `
+                <div style="font-size:12px; margin-top:8px;">
+                  ${c.evidence.map(e => `
+                    <div style="padding:5px 0; border-top:1px dashed #eef2f7;">
+                      <b>${escapeHtml(e.source)}</b>
+                      ${e.url ? ` — <a href="${escapeHtml(e.url)}" target="_blank" rel="noopener" style="color:var(--blue);">${escapeHtml(e.url.slice(0, 60))}${e.url.length > 60 ? '…' : ''}</a>` : ''}
+                      <div style="color:#64748b; margin-top:2px;">${escapeHtml(e.detail)}</div>
+                    </div>
+                  `).join("")}
+                </div>
+              ` : ''}
+            </div>
+          `).join("")}
+          <div style="font-size:11px; color:var(--text-muted); margin-top:10px; font-style:italic;">
+            ${escapeHtml(a.principle || "")}
+          </div>
+        </div>
+      `);
+    }
+
+    // --- Link intel ---
+    if (r.link_intel && r.link_intel.links && r.link_intel.links.length) {
+      const li = r.link_intel;
+      sections.push(`
+        <div class="evidence-block">
+          <h4 style="color:#2563eb;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Links found (${li.summary.live} live · ${li.summary.dead} dead · ${li.summary.total} total)
+          </h4>
+          ${li.links.map(l => `
+            <div style="padding:8px 0; border-top:1px solid #eef2f7;">
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${l.live === true ? "var(--green)" : l.live === false ? "var(--red)" : "var(--amber)"};"></span>
+                <a href="${escapeHtml(l.url)}" target="_blank" rel="noopener" style="font-weight:600; color:var(--blue); text-decoration:none; font-size:13.5px; word-break:break-all;">
+                  ${escapeHtml(l.label || l.url)}
+                </a>
+                <span style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em;">${escapeHtml(l.category)}</span>
+              </div>
+              ${l.title ? `<div style="font-size:12.5px; color:var(--text-muted); margin-top:4px; padding-left:16px;">${escapeHtml(l.title)}</div>` : ""}
+              ${l.tech_stack && l.tech_stack.length ? `
+                <div style="margin-top:6px; padding-left:16px;">
+                  ${l.tech_stack.slice(0, 8).map(t => `<span class="pill">${escapeHtml(t)}</span>`).join("")}
+                </div>
+              ` : ""}
+              ${l.github_meta ? `
+                <div style="font-size:12px; color:var(--text-muted); margin-top:4px; padding-left:16px;">
+                  <b>${escapeHtml(l.github_meta.username || "")}</b>
+                  · ${l.github_meta.public_repos || 0} repos
+                  · ${l.github_meta.followers || 0} followers
+                  ${l.github_meta.bio ? ` · ${escapeHtml(l.github_meta.bio)}` : ""}
+                </div>
+              ` : ""}
+              ${l.error ? `<div style="font-size:12px; color:var(--red); margin-top:4px; padding-left:16px;">${escapeHtml(l.error)}</div>` : ""}
+            </div>
+          `).join("")}
+          ${Object.keys(li.company_domains || {}).length ? `
+            <div style="margin-top:12px; font-size:12.5px; color:var(--text-muted);">
+              <b>Company → domain hints from contact block:</b>
+              ${Object.entries(li.company_domains).map(([k, v]) => `<div style="padding-left:8px;">· ${escapeHtml(k)} → ${escapeHtml(v)}</div>`).join("")}
+            </div>
+          ` : ""}
+        </div>
+      `);
+    }
+
+    // --- Signal profile ---
+    if (r.signal) {
+      sections.push(`
+        <div class="evidence-block">
+          <h4 style="color:var(--purple);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>
+            Signal — profile read
+          </h4>
+          <div style="font-size:14px; margin-bottom:12px;">${escapeHtml(r.signal.summary || "")}</div>
+          ${r.signal.archetypes && r.signal.archetypes.length ? r.signal.archetypes.map(a => `
+            <div style="margin-bottom:10px;">
+              <div style="display:flex; justify-content:space-between; font-size:13px;">
+                <b>${escapeHtml(a.name)}</b>
+                <span style="color:var(--text-muted);">${Math.round(a.score * 100)}%</span>
+              </div>
+              <div class="legend-bar"><div class="legend-bar-fill" style="width:${a.score * 100}%; background:var(--purple);"></div></div>
+              ${a.evidence && a.evidence.length ? `
+                <div style="font-size:11.5px; color:var(--text-muted); margin-top:4px;">
+                  ${a.evidence.slice(0, 2).map(e => `· ${escapeHtml(e)}`).join("<br>")}
+                </div>
+              ` : ""}
+            </div>
+          `).join("") : ""}
+          ${r.signal.notable && r.signal.notable.length ? `
+            <div style="margin-top:12px; font-size:13px;">
+              <b style="color:var(--navy);">Notable</b>
+              <ul style="margin:6px 0 0 18px; padding:0; color:var(--text-muted);">
+                ${r.signal.notable.map(n => `<li>${escapeHtml(n)}</li>`).join("")}
+              </ul>
+            </div>
+          ` : ""}
+          ${r.signal.gaps && r.signal.gaps.length ? `
+            <div style="margin-top:12px; font-size:13px;">
+              <b style="color:var(--amber);">Gaps</b>
+              <ul style="margin:6px 0 0 18px; padding:0; color:var(--text-muted);">
+                ${r.signal.gaps.map(n => `<li>${escapeHtml(n)}</li>`).join("")}
+              </ul>
+            </div>
+          ` : ""}
+          <div style="margin-top:10px; font-size:11px; color:var(--text-muted); font-style:italic;">
+            ${escapeHtml(r.signal.disclaimer || "")}
+            ${r.signal.mode === "heuristic" ? " (heuristic mode — set GROQ_API_KEY for LLM mode)" : ""}
+          </div>
+        </div>
+      `);
+    }
+
+    // --- JD match ---
+    if (r.jd_match) {
+      sections.push(`
+        <div class="evidence-block">
+          <h4 style="color:#2563eb;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Job description match
+          </h4>
+          <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+            <div style="font-size:28px; font-weight:800; color:var(--navy);">${r.jd_match.score_pct}%</div>
+            <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em;">
+              ${escapeHtml(r.jd_match.engine)} engine
+            </div>
+          </div>
+          ${r.jd_match.matched_terms && r.jd_match.matched_terms.length ? `
+            <div style="font-size:12.5px; color:var(--text-muted); margin-top:8px;">
+              <b style="color:var(--green);">Matched:</b>
+              ${r.jd_match.matched_terms.slice(0, 12).map(escapeHtml).join(", ")}
+            </div>
+          ` : ""}
+          ${r.jd_match.missing_terms && r.jd_match.missing_terms.length ? `
+            <div style="font-size:12.5px; color:var(--text-muted); margin-top:6px;">
+              <b style="color:var(--amber);">Missing:</b>
+              ${r.jd_match.missing_terms.slice(0, 12).map(escapeHtml).join(", ")}
+            </div>
+          ` : ""}
+          <div style="margin-top:10px; font-size:11px; color:var(--text-muted); font-style:italic;">
+            Match score is a reading aid. It does not affect the authenticity verdict.
+          </div>
+        </div>
+      `);
+    }
+
+    // --- Follow-up questions ---
+    if (r.verification_questions && r.verification_questions.length) {
+      sections.push(`
+        <div class="evidence-block">
+          <h4 style="color:var(--navy);">Suggested follow-up questions</h4>
+          <ul style="margin:6px 0 0 18px; padding:0; font-size:13.5px; color:var(--text);">
+            ${r.verification_questions.map(q => `<li style="margin-bottom:6px;">${escapeHtml(q)}</li>`).join("")}
+          </ul>
+        </div>
+      `);
+    }
+
+    // --- Nothing flagged ---
+    if (!sections.length) {
+      return `
+        <div class="clean-msg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          No manipulation, duplication, or timeline inconsistencies detected.
+        </div>
+        <div style="margin-top:10px; font-size:13px; color:#64748b; line-height:1.6;">
+          This resume may still use AI-assisted writing — that is not evaluated, by design.
+        </div>
+        <div class="preview-text">
+          ${escapeHtml((r.visible_text_preview || "").slice(0, 300))}${(r.visible_text_preview || "").length > 300 ? '…' : ''}
+        </div>
+      `;
+    }
+
+    return `<div class="evidence-grid">${sections.join("")}</div>`;
+  }
+
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    const div = document.createElement("div");
+    div.textContent = String(str);
+    return div.innerHTML;
+  }
+</script>
+
+</body>
+</html>
