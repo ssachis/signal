@@ -1,0 +1,380 @@
+{
+  "dataset": "Signal MVP v2 synthetic evaluation set",
+  "count": 40,
+  "categories": {
+    "A_clean": 10,
+    "B_ai_polished": 6,
+    "C_standalone_fabrication": 6,
+    "D_injection": 6,
+    "E_duplicate": 6,
+    "F_inconsistent": 6
+  },
+  "ground_truth": [
+    {
+      "file": "A_clean_01_Ava_Rodriguez.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_02_Liam_Chen.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_03_Noah_Williams.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_04_Mia_Patel.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_05_Ethan_Brooks.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_06_Sofia_Nguyen.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_07_Lucas_Martin.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_08_Emma_Davis.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_09_Daniel_Kim.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "A_clean_10_Olivia_Wilson.pdf",
+      "category": "A_clean",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "B_ai_polished_01_Mia_Patel.pdf",
+      "category": "B_ai_polished",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "B_ai_polished_02_Ethan_Brooks.pdf",
+      "category": "B_ai_polished",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "B_ai_polished_03_Sofia_Nguyen.pdf",
+      "category": "B_ai_polished",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "B_ai_polished_04_Lucas_Martin.pdf",
+      "category": "B_ai_polished",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "B_ai_polished_05_Emma_Davis.pdf",
+      "category": "B_ai_polished",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "B_ai_polished_06_Daniel_Kim.pdf",
+      "category": "B_ai_polished",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "C_standalone_fabrication_01_Sofia_Nguyen.pdf",
+      "category": "C_standalone_fabrication",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "C_standalone_fabrication_02_Lucas_Martin.pdf",
+      "category": "C_standalone_fabrication",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "C_standalone_fabrication_03_Emma_Davis.pdf",
+      "category": "C_standalone_fabrication",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "C_standalone_fabrication_04_Daniel_Kim.pdf",
+      "category": "C_standalone_fabrication",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "C_standalone_fabrication_05_Olivia_Wilson.pdf",
+      "category": "C_standalone_fabrication",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "C_standalone_fabrication_06_Henry_Shah.pdf",
+      "category": "C_standalone_fabrication",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "D_injection_01_Liam_Chen.pdf",
+      "category": "D_injection",
+      "expected": {
+        "injection": true,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "D_injection_02_Noah_Williams.pdf",
+      "category": "D_injection",
+      "expected": {
+        "injection": true,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "D_injection_03_Mia_Patel.pdf",
+      "category": "D_injection",
+      "expected": {
+        "injection": true,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "D_injection_04_Ethan_Brooks.pdf",
+      "category": "D_injection",
+      "expected": {
+        "injection": true,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "D_injection_05_Sofia_Nguyen.pdf",
+      "category": "D_injection",
+      "expected": {
+        "injection": true,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "D_injection_06_Lucas_Martin.pdf",
+      "category": "D_injection",
+      "expected": {
+        "injection": true,
+        "duplication": false,
+        "consistency": false
+      }
+    },
+    {
+      "file": "E_duplicate_01_1_Riley_Morgan.pdf",
+      "category": "E_duplicate",
+      "pair": 1,
+      "expected": {
+        "injection": false,
+        "duplication": true,
+        "consistency": false
+      }
+    },
+    {
+      "file": "E_duplicate_01_2_Riley_Stone.pdf",
+      "category": "E_duplicate",
+      "pair": 1,
+      "expected": {
+        "injection": false,
+        "duplication": true,
+        "consistency": false
+      }
+    },
+    {
+      "file": "E_duplicate_02_1_Jordan_Blake.pdf",
+      "category": "E_duplicate",
+      "pair": 2,
+      "expected": {
+        "injection": false,
+        "duplication": true,
+        "consistency": false
+      }
+    },
+    {
+      "file": "E_duplicate_02_2_Jordan_Reed.pdf",
+      "category": "E_duplicate",
+      "pair": 2,
+      "expected": {
+        "injection": false,
+        "duplication": true,
+        "consistency": false
+      }
+    },
+    {
+      "file": "E_duplicate_03_1_Casey_Rivera.pdf",
+      "category": "E_duplicate",
+      "pair": 3,
+      "expected": {
+        "injection": false,
+        "duplication": true,
+        "consistency": false
+      }
+    },
+    {
+      "file": "E_duplicate_03_2_Casey_Parker.pdf",
+      "category": "E_duplicate",
+      "pair": 3,
+      "expected": {
+        "injection": false,
+        "duplication": true,
+        "consistency": false
+      }
+    },
+    {
+      "file": "F_inconsistent_01_Lucas_Martin.pdf",
+      "category": "F_inconsistent",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": true
+      }
+    },
+    {
+      "file": "F_inconsistent_02_Emma_Davis.pdf",
+      "category": "F_inconsistent",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": true
+      }
+    },
+    {
+      "file": "F_inconsistent_03_Daniel_Kim.pdf",
+      "category": "F_inconsistent",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": true
+      }
+    },
+    {
+      "file": "F_inconsistent_04_Olivia_Wilson.pdf",
+      "category": "F_inconsistent",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": true
+      }
+    },
+    {
+      "file": "F_inconsistent_05_Henry_Shah.pdf",
+      "category": "F_inconsistent",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": true
+      }
+    },
+    {
+      "file": "F_inconsistent_06_Grace_Lee.pdf",
+      "category": "F_inconsistent",
+      "expected": {
+        "injection": false,
+        "duplication": false,
+        "consistency": true
+      }
+    }
+  ]
+}
