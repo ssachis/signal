@@ -120,16 +120,27 @@ def extract_visible_and_hidden_text(file_bytes: bytes, filename: str):
         try:
             with pdfplumber.open(io.BytesIO(file_bytes)) as pdf:
                 for pn, page in enumerate(pdf.pages, 1):
-                    for ch in page.chars:
+                    def _is_hidden_char(ch, page=page):
                         txt = ch.get("text", "")
                         if not txt.strip():
-                            continue
+                            return False
                         size = float(ch.get("size", 0) or 0)
                         bbox = ch.get("bbox")
                         tiny = 0 < size <= 2.0
                         white = _near_white(ch.get("non_stroking_color"))
                         off = _off_page(bbox, float(page.width), float(page.height))
-                        if tiny or white or off:
+                        return tiny or white or off
+
+                    for ch in page.chars:
+                        txt = ch.get("text", "")
+                        if not txt.strip():
+                            continue
+                        if _is_hidden_char(ch):
+                            size = float(ch.get("size", 0) or 0)
+                            bbox = ch.get("bbox")
+                            tiny = 0 < size <= 2.0
+                            white = _near_white(ch.get("non_stroking_color"))
+                            off = _off_page(bbox, float(page.width), float(page.height))
                             reasons = []
                             if tiny:
                                 reasons.append(f"very small font ({size:.1f}pt)")
@@ -144,8 +155,17 @@ def extract_visible_and_hidden_text(file_bytes: bytes, filename: str):
                                 "bbox": list(bbox) if bbox else None,
                                 "manipulation_language": _manipulation(txt),
                             })
-                        else:
-                            visible.append(txt)
+
+                    # Reconstruct properly spaced/line-broken text for everything
+                    # that ISN'T hidden, using pdfplumber's own layout engine.
+                    # (Joining page.chars with " " destroys word boundaries,
+                    # since chars are per-glyph, not per-word.)
+                    visible_page = page.filter(
+                        lambda obj: obj.get("object_type") != "char" or not _is_hidden_char(obj)
+                    )
+                    page_text = visible_page.extract_text() or ""
+                    if page_text:
+                        visible.append(page_text)
         except Exception as e:
             return {
                 "visible": "",
@@ -154,7 +174,7 @@ def extract_visible_and_hidden_text(file_bytes: bytes, filename: str):
                 "ocr_used": False,
                 "extraction_error": str(e),
             }
-        vis = " ".join(visible)
+        vis = "\n".join(visible)
         if len(re.sub(r"\s+", "", vis)) < 80:
             ocr = _ocr_pdf(file_bytes)
             if len(ocr) > len(vis):
@@ -276,26 +296,79 @@ def _chunk_hits(a, b):
     return sorted(hits, key=lambda x: -x["similarity"])[:6]
 
 
-def find_duplicates(resumes, threshold=0.82):
+def _candidate_identity(text: str) -> str:
+    """Best-effort identity for a resume (email, else first non-blank line),
+    used to tell 'the same candidate reappearing' apart from 'two
+    different candidates sharing suspiciously similar content'."""
+    m = re.search(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", text, re.I)
+    if m:
+        return m.group(0).lower()
+    for line in text.splitlines():
+        line = line.strip()
+        if line:
+            return _norm(line)
+    return ""
+
+
+def find_duplicates(resumes, threshold=0.82, common_chunk_max_docs=None):
+    """Flag resumes that share distinctive text, not generic boilerplate.
+
+    Many resumes independently use similar generic phrasing ("built
+    production services", "designed APIs and automated tests", etc.),
+    especially when produced from templates or AI writing tools. A chunk
+    that recurs across more than `common_chunk_max_docs` resumes in this
+    batch is treated as boilerplate and excluded from duplication
+    evidence -- only text shared by a minority of the batch counts as a
+    real signal of copy/reuse. Defaults to roughly a quarter of the
+    batch (floor of 2): a phrase used across most of the batch is almost
+    certainly a shared template/convention, while a small cluster of
+    resumes sharing unusually specific text is a genuine duplicate ring.
+
+    Matches between two documents that share the same candidate identity
+    (same email, or same declared name) are never flagged -- that's the
+    same person's resume reappearing, not two candidates copying content.
+    """
+    if common_chunk_max_docs is None:
+        common_chunk_max_docs = max(2, len(resumes) // 4)
+    all_chunks = {r["id"]: _chunks(r["text"]) for r in resumes}
+    identity = {r["id"]: _candidate_identity(r["text"]) for r in resumes}
+
+    # Bucket by a stable prefix, not the full chunk: PDF line-wrapping cuts
+    # the same boilerplate sentence off at different points in different
+    # documents (varying name/company lengths shift the wrap), so exact
+    # full-chunk matching badly undercounts how common a phrase really is.
+    def _key(c, n=10):
+        return " ".join(c.split()[:n])
+
+    doc_count: dict[str, int] = {}
+    for chunks in all_chunks.values():
+        for key in {_key(c) for c in chunks}:
+            doc_count[key] = doc_count.get(key, 0) + 1
+    common_keys = {k for k, n in doc_count.items() if n > common_chunk_max_docs}
+
     matches = []
     for i in range(len(resumes)):
         for j in range(i + 1, len(resumes)):
-            hits = _chunk_hits(
-                _chunks(resumes[i]["text"]), _chunks(resumes[j]["text"])
-            )
+            id_a, id_b = resumes[i]["id"], resumes[j]["id"]
+            if identity[id_a] and identity[id_a] == identity[id_b]:
+                continue
+            ca = [c for c in all_chunks[id_a] if _key(c) not in common_keys]
+            cb = [c for c in all_chunks[id_b] if _key(c) not in common_keys]
+            hits = _chunk_hits(ca, cb)
             strong = [h for h in hits if h["similarity"] >= threshold]
             near = [h for h in hits if h["similarity"] >= 0.94]
             if len(strong) >= 2 or near:
                 matches.append({
-                    "id_a": resumes[i]["id"],
+                    "id_a": id_a,
                     "name_a": resumes[i]["name"],
-                    "id_b": resumes[j]["id"],
+                    "id_b": id_b,
                     "name_b": resumes[j]["name"],
                     "similarity": round(max(h["similarity"] for h in strong), 3),
                     "matching_chunks": strong[:3],
                     "evidence_type": "distinctive section reuse",
                 })
     return sorted(matches, key=lambda x: -x["similarity"])
+
 
 
 # ------------------------------------------------------------------ consistency
