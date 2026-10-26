@@ -22,6 +22,8 @@ OUT = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'demo-results.js
 
 
 async def main():
+    if '--all' in sys.argv:  # check every labeled sample, for choosing the demo batch
+        BATCH[:] = sorted(f for f in os.listdir(SRC) if f[:2] in ('A_','B_','C_','D_','E_','F_') or f[:2] in ('E1','E2'))
     raw = [(open(os.path.join(SRC, n), 'rb').read(), n) for n in BATCH]
     results = list(await asyncio.gather(*[analyze_single_resume_async(d, n, None) for d, n in raw]))
     for r in results:
@@ -39,7 +41,11 @@ async def main():
         r.pop('full_text', None)
     data = {'count': len(results), 'resumes': results, 'duplicate_pairs': pairs, 'demo': True,
             'files': BATCH}
-    with open(OUT, 'w') as f:
+    if '--all' in sys.argv:
+        OUT_ = os.path.join(os.path.dirname(__file__), 'all-samples.txt')
+    else:
+        OUT_ = OUT
+    with open(OUT_ if OUT_ == OUT else os.devnull, 'w') as f:
         json.dump(data, f, indent=1, default=str)
     for r in results:
         print(f"{r['filename']:48s} flagged={r['overall_flagged']} inj={r['injection']['flagged']} "

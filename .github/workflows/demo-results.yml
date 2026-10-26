@@ -17,9 +17,10 @@ jobs:
         with: { python-version: '3.11' }
       - run: pip install -q pdfplumber python-docx scikit-learn httpx dnspython rapidfuzz python-dotenv
       - run: python demo/run_demo.py 2>&1 | tee demo/last-run.txt
+      - run: python demo/run_demo.py --all 2>&1 | tee demo/all-samples.txt
       - name: Save results
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add frontend/demo-results.json demo/last-run.txt
+          git add frontend/demo-results.json demo/last-run.txt demo/all-samples.txt
           git diff --cached --quiet || (git commit -m "Demo results" && git push)
