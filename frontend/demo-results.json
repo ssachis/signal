@@ -1,178 +1,6 @@
 {
- "count": 13,
+ "count": 10,
  "resumes": [
-  {
-   "filename": "A_clean_01_Ava_Rodriguez.pdf",
-   "visible_text_preview": "Ava Rodriguez\nNew York, NY | ava.rodriguez@example.com\nSUMMARY\nSoftware Engineer with experience building reliable software and data products in collaborative engineering te\nEXPERIENCE\nSoftware Engineer \u2014 Brightline Systems | 2023\u20132026\n(cid:127) Built production services used by internal teams; improved reliability and reduced recurring operational wor\n(cid:127) Designed APIs, automated tests, and observability workflows across a multi-service environment.\nEDUCATION\nState University \u2014 B.S. Computer Science, graduated 2019\nSKILLS\nPython, PyTorch, SQL, GCP",
-   "ocr_used": false,
-   "injection": {
-    "flagged": false,
-    "matches": [],
-    "hidden_text_blocks": 0,
-    "high_confidence": 0
-   },
-   "consistency": {
-    "flagged": false,
-    "flags": [],
-    "extracted": {
-     "graduation_year": 2026,
-     "claimed_years_experience": null,
-     "date_ranges_found": [
-      "2023\u20132026"
-     ]
-    }
-   },
-   "authenticity": {
-    "claims": {
-     "email_domain": "example.com",
-     "phone_area_code": null,
-     "location": "New York, NY",
-     "employers": []
-    },
-    "checks": [
-     {
-      "check": "Employer: Software Engineer (2023-01-01 -- 2026-12-01)",
-      "category": "employer",
-      "status": "corroborated",
-      "score": 1.0,
-      "flags": [],
-      "detail": "Independent public evidence corroborates this employer.",
-      "evidence": [
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/9845006F7951CB961464",
-        "detail": "Legal entity: Jentz Software Engineer AB (status=ACTIVE, LEI 9845006F7951CB961464)",
-        "weight": 0.4
-       },
-       {
-        "source": "registry",
-        "url": null,
-        "detail": "Legal entity corroborated in a public registry",
-        "weight": 0.0
-       },
-       {
-        "source": "DNS",
-        "url": null,
-        "detail": "example.com has mail (MX) records",
-        "weight": 0.1
-       },
-       {
-        "source": "RDAP",
-        "url": "https://rdap.org/domain/example.com",
-        "detail": "Domain registered 1995-08-14 (predates claim)",
-        "weight": 0.15
-       },
-       {
-        "source": "Wayback",
-        "url": "http://web.archive.org/web/*/example.com",
-        "detail": "Archived since 2002-01-20",
-        "weight": 0.15
-       }
-      ]
-     }
-    ],
-    "claim_quality": {
-     "review": false,
-     "flags": [],
-     "principle": "content vagueness is a review cue, not proof of fabrication"
-    },
-    "summary": {
-     "corroborated": 1,
-     "discrepancy": 0,
-     "unverified": 0
-    },
-    "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
-   },
-   "verification_questions": [
-    "Pick one project on your resume: what was the hardest problem, what did you personally change, and how did you verify the result?"
-   ],
-   "link_intel": {
-    "links": [
-     {
-      "url": "https://example.com",
-      "category": "portfolio",
-      "label": "Portfolio",
-      "live": true,
-      "status_code": 200,
-      "title": "Example Domain",
-      "description": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
-      "redirect_target": null,
-      "tech_stack": [],
-      "github_meta": null,
-      "error": null
-     }
-    ],
-    "company_domains": {
-     "New York": "example.com"
-    },
-    "summary": {
-     "total": 1,
-     "live": 1,
-     "dead": 0,
-     "by_category": {
-      "linkedin": 0,
-      "contact": 0,
-      "portfolio": 1,
-      "other": 0,
-      "writing": 0,
-      "github": 0
-     }
-    }
-   },
-   "signal": {
-    "summary": "Resume signals a primarily Builder, Scaler profile based on 4 observable action verbs.",
-    "archetypes": [
-     {
-      "name": "Builder",
-      "score": 0.17,
-      "evidence": [
-       "rightline systems | 2023\u20132026 (cid:127) built production services used by internal te",
-       "ced recurring operational wor (cid:127) designed apis, automated tests, and observabilit"
-      ]
-     },
-     {
-      "name": "Scaler",
-      "score": 0.17,
-      "evidence": [
-       "uction services used by internal teams; improved reliability and reduced recurring opera",
-       "nternal teams; improved reliability and reduced recurring operational wor (cid:127) des"
-      ]
-     }
-    ],
-    "notable": [
-     "1 live portfolio link(s) verified."
-    ],
-    "gaps": [
-     "No quantified impact claims -- bullets describe tasks, not outcomes."
-    ],
-    "confidence": "low",
-    "mode": "heuristic",
-    "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
-   },
-   "id": "127fc7b2",
-   "name": "A_clean_01_Ava_Rodriguez",
-   "duplication": {
-    "flagged": true,
-    "matches": [
-     {
-      "id_a": "127fc7b2",
-      "name_a": "A_clean_01_Ava_Rodriguez",
-      "id_b": "64fe2a65",
-      "name_b": "C_standalone_fabrication_01_Sofia_Nguyen",
-      "similarity": 1.0,
-      "matching_chunks": [
-       {
-        "chunk_a": "software engineer with experience building reliable software and data products in collaborative engineering te",
-        "chunk_b": "software engineer with experience building reliable software and data products in collaborative engineering te",
-        "similarity": 1.0
-       }
-      ],
-      "evidence_type": "distinctive section reuse"
-     }
-    ]
-   },
-   "overall_flagged": true
-  },
   {
    "filename": "A_clean_real.docx",
    "visible_text_preview": "Jordan Lee\nMarketing Analyst\nExperience:\nMarketing Analyst, Northwind Retail (2021 - Present)\nRan A/B tests on email campaigns and put together monthly performance reports for the growth team. Helped shift budget toward channels that were actually converting.\nEducation: B.A. Marketing, Riverdale College, 2021",
@@ -272,12 +100,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 0,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
@@ -302,7 +130,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "08ed5b51",
+   "id": "6da24350",
    "name": "A_clean_real",
    "duplication": {
     "flagged": false,
@@ -311,8 +139,8 @@
    "overall_flagged": false
   },
   {
-   "filename": "B_ai_polished_01_Mia_Patel.pdf",
-   "visible_text_preview": "Mia Patel\nChicago, IL | mia.patel@example.com\nSUMMARY\nSoftware professional who translates ambiguous problems into measurable, reliable outcomes, partnering across\nEXPERIENCE\nML Engineer \u2014 Brightline Systems | 2023\u20132026\n(cid:127) Built production services used by internal teams; improved reliability and reduced recurring operational wor\n(cid:127) Designed APIs, automated tests, and observability workflows across a multi-service environment.\nEDUCATION\nState University \u2014 B.S. Computer Science, graduated 2020\nSKILLS\nPython, SQL, AWS, Git, CI/CD, distributed systems",
+   "filename": "A_clean_03_Noah_Williams.pdf",
+   "visible_text_preview": "Noah Williams\nAustin, TX | noah.williams@example.com\nSUMMARY\nBackend Engineer with experience building reliable software and data products in collaborative engineering tea\nEXPERIENCE\nBackend Engineer \u2014 Brightline Systems | 2023\u20132026\n(cid:127) Built production services used by internal teams; improved reliability and reduced recurring operational wor\n(cid:127) Designed APIs, automated tests, and observability workflows across a multi-service environment.\nEDUCATION\nState University \u2014 B.S. Computer Science, graduated 2021\nSKILLS\nJava, Spring, Kafka, Kubernetes",
    "ocr_used": false,
    "injection": {
     "flagged": false,
@@ -335,54 +163,20 @@
     "claims": {
      "email_domain": "example.com",
      "phone_area_code": null,
-     "location": "Patel\nChicago, IL",
+     "location": "Williams\nAustin, TX",
      "employers": []
     },
     "checks": [
      {
-      "check": "Employer: Software (2023-01-01 -- 2026-12-01)",
+      "check": "Employer: Backend Engineer (2023-01-01 -- 2026-12-01)",
       "category": "employer",
       "status": "corroborated",
-      "score": 1.0,
-      "flags": [],
+      "score": 0.8,
+      "flags": [
+       "no_registry_hit"
+      ],
       "detail": "Independent public evidence corroborates this employer.",
       "evidence": [
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/213800OUZ4N6GA7U6982",
-        "detail": "Legal entity: SOFTWARE SOFTWARE COMPANY LIMITED (status=INACTIVE, LEI 213800OUZ4N6GA7U6982)",
-        "weight": 0.2
-       },
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/648800RIH2PQXIL1UY43",
-        "detail": "Legal entity: RA Software (status=ACTIVE, LEI 648800RIH2PQXIL1UY43)",
-        "weight": 0.4
-       },
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/9845008D346405C1D588",
-        "detail": "Legal entity: HIRAJI SOFTWARE (status=ACTIVE, LEI 9845008D346405C1D588)",
-        "weight": 0.4
-       },
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/984500U941EA65A3B616",
-        "detail": "Legal entity: ORDINAL SOFTWARE (status=ACTIVE, LEI 984500U941EA65A3B616)",
-        "weight": 0.4
-       },
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/984500D43987097BED43",
-        "detail": "Legal entity: HorizonH Software (status=ACTIVE, LEI 984500D43987097BED43)",
-        "weight": 0.4
-       },
-       {
-        "source": "registry",
-        "url": null,
-        "detail": "Legal entity corroborated in a public registry",
-        "weight": 0.0
-       },
        {
         "source": "DNS",
         "url": null,
@@ -417,7 +211,7 @@
     "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
    },
    "verification_questions": [
-    "You mention: 'Python, SQL, AWS, Git, CI/CD, distributed systems'. What was your specific contribution, and what was one technical decision you personally made?"
+    "Pick one project on your resume: what was the hardest problem, what did you personally change, and how did you verify the result?"
    ],
    "link_intel": {
     "links": [
@@ -436,19 +230,19 @@
      }
     ],
     "company_domains": {
-     "Chicago": "example.com"
+     "Austin": "example.com"
     },
     "summary": {
      "total": 1,
      "live": 1,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 1,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
@@ -482,8 +276,154 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "55d5bf42",
-   "name": "B_ai_polished_01_Mia_Patel",
+   "id": "6ea95f54",
+   "name": "A_clean_03_Noah_Williams",
+   "duplication": {
+    "flagged": false,
+    "matches": []
+   },
+   "overall_flagged": false
+  },
+  {
+   "filename": "A_clean_04_Mia_Patel.pdf",
+   "visible_text_preview": "Mia Patel\nChicago, IL | mia.patel@example.com\nSUMMARY\nML Engineer with experience building reliable software and data products in collaborative engineering teams.\nEXPERIENCE\nML Engineer \u2014 Brightline Systems | 2023\u20132026\n(cid:127) Built production services used by internal teams; improved reliability and reduced recurring operational wor\n(cid:127) Designed APIs, automated tests, and observability workflows across a multi-service environment.\nEDUCATION\nState University \u2014 B.S. Computer Science, graduated 2022\nSKILLS\nJava, Spring, Kafka, Kubernetes",
+   "ocr_used": false,
+   "injection": {
+    "flagged": false,
+    "matches": [],
+    "hidden_text_blocks": 0,
+    "high_confidence": 0
+   },
+   "consistency": {
+    "flagged": false,
+    "flags": [],
+    "extracted": {
+     "graduation_year": 2026,
+     "claimed_years_experience": null,
+     "date_ranges_found": [
+      "2023\u20132026"
+     ]
+    }
+   },
+   "authenticity": {
+    "claims": {
+     "email_domain": "example.com",
+     "phone_area_code": null,
+     "location": "Patel\nChicago, IL",
+     "employers": []
+    },
+    "checks": [
+     {
+      "check": "Employer: ML Engineer (2023-01-01 -- 2026-12-01)",
+      "category": "employer",
+      "status": "corroborated",
+      "score": 0.8,
+      "flags": [
+       "no_registry_hit"
+      ],
+      "detail": "Independent public evidence corroborates this employer.",
+      "evidence": [
+       {
+        "source": "DNS",
+        "url": null,
+        "detail": "example.com has mail (MX) records",
+        "weight": 0.1
+       },
+       {
+        "source": "RDAP",
+        "url": "https://rdap.org/domain/example.com",
+        "detail": "Domain registered 1995-08-14 (predates claim)",
+        "weight": 0.15
+       },
+       {
+        "source": "Wayback",
+        "url": "http://web.archive.org/web/*/example.com",
+        "detail": "Archived since 2002-01-20",
+        "weight": 0.15
+       }
+      ]
+     }
+    ],
+    "claim_quality": {
+     "review": false,
+     "flags": [],
+     "principle": "content vagueness is a review cue, not proof of fabrication"
+    },
+    "summary": {
+     "corroborated": 1,
+     "discrepancy": 0,
+     "unverified": 0
+    },
+    "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
+   },
+   "verification_questions": [
+    "Pick one project on your resume: what was the hardest problem, what did you personally change, and how did you verify the result?"
+   ],
+   "link_intel": {
+    "links": [
+     {
+      "url": "https://example.com",
+      "category": "portfolio",
+      "label": "Portfolio",
+      "live": true,
+      "status_code": 200,
+      "title": "Example Domain",
+      "description": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "redirect_target": null,
+      "tech_stack": [],
+      "github_meta": null,
+      "error": null
+     }
+    ],
+    "company_domains": {
+     "Chicago": "example.com"
+    },
+    "summary": {
+     "total": 1,
+     "live": 1,
+     "dead": 0,
+     "by_category": {
+      "github": 0,
+      "contact": 0,
+      "portfolio": 1,
+      "writing": 0,
+      "other": 0,
+      "linkedin": 0
+     }
+    }
+   },
+   "signal": {
+    "summary": "Resume signals a primarily Builder, Scaler profile based on 4 observable action verbs.",
+    "archetypes": [
+     {
+      "name": "Builder",
+      "score": 0.17,
+      "evidence": [
+       "rightline systems | 2023\u20132026 (cid:127) built production services used by internal te",
+       "ced recurring operational wor (cid:127) designed apis, automated tests, and observabilit"
+      ]
+     },
+     {
+      "name": "Scaler",
+      "score": 0.17,
+      "evidence": [
+       "uction services used by internal teams; improved reliability and reduced recurring opera",
+       "nternal teams; improved reliability and reduced recurring operational wor (cid:127) des"
+      ]
+     }
+    ],
+    "notable": [
+     "1 live portfolio link(s) verified."
+    ],
+    "gaps": [
+     "No quantified impact claims -- bullets describe tasks, not outcomes."
+    ],
+    "confidence": "low",
+    "mode": "heuristic",
+    "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
+   },
+   "id": "35f5464a",
+   "name": "A_clean_04_Mia_Patel",
    "duplication": {
     "flagged": false,
     "matches": []
@@ -573,12 +513,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 0,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
@@ -610,7 +550,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "d67d1997",
+   "id": "7cac49ef",
    "name": "B_ai_polished_legit",
    "duplication": {
     "flagged": false,
@@ -619,203 +559,13 @@
    "overall_flagged": false
   },
   {
-   "filename": "C_standalone_fabrication_01_Sofia_Nguyen.pdf",
-   "visible_text_preview": "Sofia Nguyen\nSan Francisco, CA | sofia.nguyen@example.com\nSUMMARY\nSoftware Engineer with experience building reliable software and data products in collaborative engineering te\nEXPERIENCE\nSoftware Engineer \u2014 Northstar Labs | 2020\u20132023\n(cid:127) Led migration of an event-processing service from batch jobs to Kafka consumers, cutting processing latency\n(cid:127) Introduced contract tests and deployment checks that reduced rollback incidents across three production serv\nSoftware Engineer \u2014 Harbor Analytics | 2023\u20132026\n(cid:127) Built Python services for customer reporting and automated data-quality checks.\n(cid:127) Partnered with product managers to define release metrics and incident follow-u",
+   "filename": "A_clean_05_Ethan_Brooks.pdf",
+   "visible_text_preview": "Ethan Brooks\nSeattle, WA | ethan.brooks@example.com\nSUMMARY\nProduct Analyst with experience building reliable software and data products in collaborative engineering team\nEXPERIENCE\nProduct Analyst \u2014 Brightline Systems | 2023\u20132026\n(cid:127) Built production services used by internal teams; improved reliability and reduced recurring operational wor\n(cid:127) Designed APIs, automated tests, and observability workflows across a multi-service environment.\nEDUCATION\nState University \u2014 B.S. Computer Science, graduated 2019\nSKILLS\nPython, SQL, AWS, Docker",
    "ocr_used": false,
    "injection": {
     "flagged": false,
     "matches": [],
     "hidden_text_blocks": 0,
-    "high_confidence": 0
-   },
-   "consistency": {
-    "flagged": true,
-    "flags": [
-     {
-      "type": "overlapping_roles",
-      "severity": "medium",
-      "detail": "Two work-history ranges overlap for about 12 months: '2020\u20132023' and '2023\u20132026'.",
-      "evidence": [
-       "2020\u20132023",
-       "2023\u20132026"
-      ]
-     }
-    ],
-    "extracted": {
-     "graduation_year": 2023,
-     "claimed_years_experience": null,
-     "date_ranges_found": [
-      "2020\u20132023",
-      "2023\u20132026"
-     ]
-    }
-   },
-   "authenticity": {
-    "claims": {
-     "email_domain": "example.com",
-     "phone_area_code": null,
-     "location": "San Francisco, CA",
-     "employers": []
-    },
-    "checks": [
-     {
-      "check": "Employer: Software Engineer (2020-01-01 -- 2023-12-01)",
-      "category": "employer",
-      "status": "corroborated",
-      "score": 1.0,
-      "flags": [],
-      "detail": "Independent public evidence corroborates this employer.",
-      "evidence": [
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/9845006F7951CB961464",
-        "detail": "Legal entity: Jentz Software Engineer AB (status=ACTIVE, LEI 9845006F7951CB961464)",
-        "weight": 0.4
-       },
-       {
-        "source": "registry",
-        "url": null,
-        "detail": "Legal entity corroborated in a public registry",
-        "weight": 0.0
-       },
-       {
-        "source": "DNS",
-        "url": null,
-        "detail": "example.com has mail (MX) records",
-        "weight": 0.1
-       },
-       {
-        "source": "RDAP",
-        "url": "https://rdap.org/domain/example.com",
-        "detail": "Domain registered 1995-08-14 (predates claim)",
-        "weight": 0.15
-       },
-       {
-        "source": "Wayback",
-        "url": "http://web.archive.org/web/*/example.com",
-        "detail": "Archived since 2002-01-20",
-        "weight": 0.15
-       }
-      ]
-     }
-    ],
-    "claim_quality": {
-     "review": false,
-     "flags": [],
-     "principle": "content vagueness is a review cue, not proof of fabrication"
-    },
-    "summary": {
-     "corroborated": 1,
-     "discrepancy": 0,
-     "unverified": 0
-    },
-    "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
-   },
-   "verification_questions": [
-    "You mention: '(cid:127) Led migration of an event-processing service from batch jobs to Kafka consumers, cutting processing latency'. What was your specific contribution, and what was one technical decision you personally made?",
-    "You mention: '(cid:127) Built Python services for customer reporting and automated data-quality checks.'. What was your specific contribution, and what was one technical decision you personally made?"
-   ],
-   "link_intel": {
-    "links": [
-     {
-      "url": "https://example.com",
-      "category": "portfolio",
-      "label": "Portfolio",
-      "live": true,
-      "status_code": 200,
-      "title": "Example Domain",
-      "description": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
-      "redirect_target": null,
-      "tech_stack": [],
-      "github_meta": null,
-      "error": null
-     }
-    ],
-    "company_domains": {
-     "San Francisco": "example.com"
-    },
-    "summary": {
-     "total": 1,
-     "live": 1,
-     "dead": 0,
-     "by_category": {
-      "linkedin": 0,
-      "contact": 0,
-      "portfolio": 1,
-      "other": 0,
-      "writing": 0,
-      "github": 0
-     }
-    }
-   },
-   "signal": {
-    "summary": "Resume signals a primarily Initiator, Builder profile based on 4 observable action verbs.",
-    "archetypes": [
-     {
-      "name": "Initiator",
-      "score": 0.17,
-      "evidence": [
-       "\u2014 northstar labs | 2020\u20132023 (cid:127) led migration of an event-processing servic",
-       "s, cutting processing latency (cid:127) introduced contract tests and deployment checks th"
-      ]
-     },
-     {
-      "name": "Builder",
-      "score": 0.08,
-      "evidence": [
-       "harbor analytics | 2023\u20132026 (cid:127) built python services for customer reporting"
-      ]
-     },
-     {
-      "name": "Scaler",
-      "score": 0.08,
-      "evidence": [
-       "ntract tests and deployment checks that reduced rollback incidents across three product"
-      ]
-     }
-    ],
-    "notable": [
-     "1 live portfolio link(s) verified."
-    ],
-    "gaps": [
-     "No quantified impact claims -- bullets describe tasks, not outcomes."
-    ],
-    "confidence": "medium",
-    "mode": "heuristic",
-    "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
-   },
-   "id": "64fe2a65",
-   "name": "C_standalone_fabrication_01_Sofia_Nguyen",
-   "duplication": {
-    "flagged": true,
-    "matches": [
-     {
-      "id_a": "127fc7b2",
-      "name_a": "A_clean_01_Ava_Rodriguez",
-      "id_b": "64fe2a65",
-      "name_b": "C_standalone_fabrication_01_Sofia_Nguyen",
-      "similarity": 1.0,
-      "matching_chunks": [
-       {
-        "chunk_a": "software engineer with experience building reliable software and data products in collaborative engineering te",
-        "chunk_b": "software engineer with experience building reliable software and data products in collaborative engineering te",
-        "similarity": 1.0
-       }
-      ],
-      "evidence_type": "distinctive section reuse"
-     }
-    ]
-   },
-   "overall_flagged": true
-  },
-  {
-   "filename": "D_injection_01_Liam_Chen.pdf",
-   "visible_text_preview": "Liam Chen\nBoston, MA | liam.chen@example.com\nSUMMARY\nData Engineer with experience building reliable software and data products in collaborative engineering teams.\nEXPERIENCE\nData Engineer \u2014 Brightline Systems | 2023\u20132026\n(cid:127) Built production services used by internal teams; improved reliability and reduced recurring operational wor\n(cid:127) Designed APIs, automated tests, and observability workflows across a multi-service environment.\nEDUCATION\nState University \u2014 B.S. Computer Science, graduated 2019\nSKILLS\nTypeScript, React, Node.js, PostgreSQL",
-   "ocr_used": false,
-   "injection": {
-    "flagged": false,
-    "matches": [],
-    "hidden_text_blocks": 85,
     "high_confidence": 0
    },
    "consistency": {
@@ -833,12 +583,12 @@
     "claims": {
      "email_domain": "example.com",
      "phone_area_code": null,
-     "location": "Chen\nBoston, MA",
+     "location": "Brooks\nSeattle, WA",
      "employers": []
     },
     "checks": [
      {
-      "check": "Employer: Data Engineer (2023-01-01 -- 2026-12-01)",
+      "check": "Employer: Product Analyst (2023-01-01 -- 2026-12-01)",
       "category": "employer",
       "status": "corroborated",
       "score": 0.8,
@@ -900,19 +650,19 @@
      }
     ],
     "company_domains": {
-     "Boston": "example.com"
+     "Seattle": "example.com"
     },
     "summary": {
      "total": 1,
      "live": 1,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 1,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
@@ -946,8 +696,8 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "de2e3c56",
-   "name": "D_injection_01_Liam_Chen",
+   "id": "22daf528",
+   "name": "A_clean_05_Ethan_Brooks",
    "duplication": {
     "flagged": false,
     "matches": []
@@ -1040,12 +790,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 0,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
@@ -1077,377 +827,11 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "98f01322",
+   "id": "d57ef572",
    "name": "D_injected",
    "duplication": {
     "flagged": false,
     "matches": []
-   },
-   "overall_flagged": true
-  },
-  {
-   "filename": "E_duplicate_01_1_Riley_Morgan.pdf",
-   "visible_text_preview": "Riley Morgan\nNew York, NY | riley.morgan@example.com\nSUMMARY\nProduct Engineer with experience building reliable software and data products in collaborative engineering tea\nEXPERIENCE\nProduct Engineer \u2014 Northstar Payments | 2022\u20132026\n(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl\n(cid:127) Created a replay tool used by on-call engineers to reproduce production payment incidents without touching c\nSoftware Engineer \u2014 River Labs | 2020\u20132022\n(cid:127) Built internal APIs and automated integration tests for financial reporting workflows.\n(cid:127) Maintained CI pipelines and production alerts for a small platform team.\nEDUCAT",
-   "ocr_used": false,
-   "injection": {
-    "flagged": false,
-    "matches": [],
-    "hidden_text_blocks": 0,
-    "high_confidence": 0
-   },
-   "consistency": {
-    "flagged": true,
-    "flags": [
-     {
-      "type": "overlapping_roles",
-      "severity": "medium",
-      "detail": "Two work-history ranges overlap for about 12 months: '2022\u20132026' and '2020\u20132022'.",
-      "evidence": [
-       "2022\u20132026",
-       "2020\u20132022"
-      ]
-     }
-    ],
-    "extracted": {
-     "graduation_year": 2022,
-     "claimed_years_experience": null,
-     "date_ranges_found": [
-      "2022\u20132026",
-      "2020\u20132022"
-     ]
-    }
-   },
-   "authenticity": {
-    "claims": {
-     "email_domain": "example.com",
-     "phone_area_code": null,
-     "location": "New York, NY",
-     "employers": []
-    },
-    "checks": [
-     {
-      "check": "Employer: Product Engineer (2022-01-01 -- 2026-12-01)",
-      "category": "employer",
-      "status": "corroborated",
-      "score": 0.8,
-      "flags": [
-       "no_registry_hit"
-      ],
-      "detail": "Independent public evidence corroborates this employer.",
-      "evidence": [
-       {
-        "source": "DNS",
-        "url": null,
-        "detail": "example.com has mail (MX) records",
-        "weight": 0.1
-       },
-       {
-        "source": "RDAP",
-        "url": "https://rdap.org/domain/example.com",
-        "detail": "Domain registered 1995-08-14 (predates claim)",
-        "weight": 0.15
-       },
-       {
-        "source": "Wayback",
-        "url": "http://web.archive.org/web/*/example.com",
-        "detail": "Archived since 2002-01-20",
-        "weight": 0.15
-       }
-      ]
-     }
-    ],
-    "claim_quality": {
-     "review": false,
-     "flags": [],
-     "principle": "content vagueness is a review cue, not proof of fabrication"
-    },
-    "summary": {
-     "corroborated": 1,
-     "discrepancy": 0,
-     "unverified": 0
-    },
-    "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
-   },
-   "verification_questions": [
-    "You mention: '(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl'. What was your specific contribution, and what was one technical decision you personally made?"
-   ],
-   "link_intel": {
-    "links": [
-     {
-      "url": "https://example.com",
-      "category": "portfolio",
-      "label": "Portfolio",
-      "live": true,
-      "status_code": 200,
-      "title": "Example Domain",
-      "description": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
-      "redirect_target": null,
-      "tech_stack": [],
-      "github_meta": null,
-      "error": null
-     }
-    ],
-    "company_domains": {
-     "New York": "example.com"
-    },
-    "summary": {
-     "total": 1,
-     "live": 1,
-     "dead": 0,
-     "by_category": {
-      "linkedin": 0,
-      "contact": 0,
-      "portfolio": 1,
-      "other": 0,
-      "writing": 0,
-      "github": 0
-     }
-    }
-   },
-   "signal": {
-    "summary": "Resume signals a primarily Builder, Operator profile based on 4 observable action verbs.",
-    "archetypes": [
-     {
-      "name": "Builder",
-      "score": 0.25,
-      "evidence": [
-       "orthstar payments | 2022\u20132026 (cid:127) built the atlas reconciliation pipeline that",
-       "neer \u2014 river labs | 2020\u20132022 (cid:127) built internal apis and automated integration",
-       "a topics and identifies settl (cid:127) created a replay tool used by on-call engineers"
-      ]
-     },
-     {
-      "name": "Operator",
-      "score": 0.08,
-      "evidence": [
-       "inancial reporting workflows. (cid:127) maintained ci pipelines and production alerts for"
-      ]
-     }
-    ],
-    "notable": [
-     "1 live portfolio link(s) verified."
-    ],
-    "gaps": [
-     "No quantified impact claims -- bullets describe tasks, not outcomes."
-    ],
-    "confidence": "low",
-    "mode": "heuristic",
-    "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
-   },
-   "id": "471dfd88",
-   "name": "E_duplicate_01_1_Riley_Morgan",
-   "duplication": {
-    "flagged": true,
-    "matches": [
-     {
-      "id_a": "471dfd88",
-      "name_a": "E_duplicate_01_1_Riley_Morgan",
-      "id_b": "5de96295",
-      "name_b": "E_duplicate_01_2_Riley_Stone",
-      "similarity": 1.0,
-      "matching_chunks": [
-       {
-        "chunk_a": "product engineer with experience building reliable software and data products in collaborative engineering tea",
-        "chunk_b": "product engineer with experience building reliable software and data products in collaborative engineering tea",
-        "similarity": 1.0
-       },
-       {
-        "chunk_a": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
-        "chunk_b": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
-        "similarity": 1.0
-       },
-       {
-        "chunk_a": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
-        "chunk_b": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
-        "similarity": 1.0
-       }
-      ],
-      "evidence_type": "distinctive section reuse"
-     }
-    ]
-   },
-   "overall_flagged": true
-  },
-  {
-   "filename": "E_duplicate_01_2_Riley_Stone.pdf",
-   "visible_text_preview": "Riley Stone\nAustin, TX | riley.stone@example.com\nSUMMARY\nProduct Engineer with experience building reliable software and data products in collaborative engineering tea\nEXPERIENCE\nProduct Engineer \u2014 Northstar Payments | 2022\u20132026\n(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl\n(cid:127) Created a replay tool used by on-call engineers to reproduce production payment incidents without touching c\nSoftware Engineer \u2014 River Labs | 2020\u20132022\n(cid:127) Built internal APIs and automated integration tests for financial reporting workflows.\n(cid:127) Maintained CI pipelines and production alerts for a small platform team.\nEDUCATION\n",
-   "ocr_used": false,
-   "injection": {
-    "flagged": false,
-    "matches": [],
-    "hidden_text_blocks": 0,
-    "high_confidence": 0
-   },
-   "consistency": {
-    "flagged": true,
-    "flags": [
-     {
-      "type": "overlapping_roles",
-      "severity": "medium",
-      "detail": "Two work-history ranges overlap for about 12 months: '2022\u20132026' and '2020\u20132022'.",
-      "evidence": [
-       "2022\u20132026",
-       "2020\u20132022"
-      ]
-     }
-    ],
-    "extracted": {
-     "graduation_year": 2022,
-     "claimed_years_experience": null,
-     "date_ranges_found": [
-      "2022\u20132026",
-      "2020\u20132022"
-     ]
-    }
-   },
-   "authenticity": {
-    "claims": {
-     "email_domain": "example.com",
-     "phone_area_code": null,
-     "location": "Stone\nAustin, TX",
-     "employers": []
-    },
-    "checks": [
-     {
-      "check": "Employer: Product Engineer (2022-01-01 -- 2026-12-01)",
-      "category": "employer",
-      "status": "corroborated",
-      "score": 0.8,
-      "flags": [
-       "no_registry_hit"
-      ],
-      "detail": "Independent public evidence corroborates this employer.",
-      "evidence": [
-       {
-        "source": "DNS",
-        "url": null,
-        "detail": "example.com has mail (MX) records",
-        "weight": 0.1
-       },
-       {
-        "source": "RDAP",
-        "url": "https://rdap.org/domain/example.com",
-        "detail": "Domain registered 1995-08-14 (predates claim)",
-        "weight": 0.15
-       },
-       {
-        "source": "Wayback",
-        "url": "http://web.archive.org/web/*/example.com",
-        "detail": "Archived since 2002-01-20",
-        "weight": 0.15
-       }
-      ]
-     }
-    ],
-    "claim_quality": {
-     "review": false,
-     "flags": [],
-     "principle": "content vagueness is a review cue, not proof of fabrication"
-    },
-    "summary": {
-     "corroborated": 1,
-     "discrepancy": 0,
-     "unverified": 0
-    },
-    "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
-   },
-   "verification_questions": [
-    "You mention: '(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl'. What was your specific contribution, and what was one technical decision you personally made?"
-   ],
-   "link_intel": {
-    "links": [
-     {
-      "url": "https://example.com",
-      "category": "portfolio",
-      "label": "Portfolio",
-      "live": true,
-      "status_code": 200,
-      "title": "Example Domain",
-      "description": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
-      "redirect_target": null,
-      "tech_stack": [],
-      "github_meta": null,
-      "error": null
-     }
-    ],
-    "company_domains": {
-     "Austin": "example.com"
-    },
-    "summary": {
-     "total": 1,
-     "live": 1,
-     "dead": 0,
-     "by_category": {
-      "linkedin": 0,
-      "contact": 0,
-      "portfolio": 1,
-      "other": 0,
-      "writing": 0,
-      "github": 0
-     }
-    }
-   },
-   "signal": {
-    "summary": "Resume signals a primarily Builder, Operator profile based on 4 observable action verbs.",
-    "archetypes": [
-     {
-      "name": "Builder",
-      "score": 0.25,
-      "evidence": [
-       "orthstar payments | 2022\u20132026 (cid:127) built the atlas reconciliation pipeline that",
-       "neer \u2014 river labs | 2020\u20132022 (cid:127) built internal apis and automated integration",
-       "a topics and identifies settl (cid:127) created a replay tool used by on-call engineers"
-      ]
-     },
-     {
-      "name": "Operator",
-      "score": 0.08,
-      "evidence": [
-       "inancial reporting workflows. (cid:127) maintained ci pipelines and production alerts for"
-      ]
-     }
-    ],
-    "notable": [
-     "1 live portfolio link(s) verified."
-    ],
-    "gaps": [
-     "No quantified impact claims -- bullets describe tasks, not outcomes."
-    ],
-    "confidence": "low",
-    "mode": "heuristic",
-    "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
-   },
-   "id": "5de96295",
-   "name": "E_duplicate_01_2_Riley_Stone",
-   "duplication": {
-    "flagged": true,
-    "matches": [
-     {
-      "id_a": "471dfd88",
-      "name_a": "E_duplicate_01_1_Riley_Morgan",
-      "id_b": "5de96295",
-      "name_b": "E_duplicate_01_2_Riley_Stone",
-      "similarity": 1.0,
-      "matching_chunks": [
-       {
-        "chunk_a": "product engineer with experience building reliable software and data products in collaborative engineering tea",
-        "chunk_b": "product engineer with experience building reliable software and data products in collaborative engineering tea",
-        "similarity": 1.0
-       },
-       {
-        "chunk_a": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
-        "chunk_b": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
-        "similarity": 1.0
-       },
-       {
-        "chunk_a": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
-        "chunk_b": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
-        "similarity": 1.0
-       }
-      ],
-      "evidence_type": "distinctive section reuse"
-     }
-    ]
    },
    "overall_flagged": true
   },
@@ -1573,12 +957,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 0,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
@@ -1617,15 +1001,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "7ac112db",
+   "id": "e36bc49b",
    "name": "E1_duplicated",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "7ac112db",
+      "id_a": "e36bc49b",
       "name_a": "E1_duplicated",
-      "id_b": "5414ede9",
+      "id_b": "c4de0af3",
       "name_b": "E2_duplicated",
       "similarity": 1.0,
       "matching_chunks": [
@@ -1763,12 +1147,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 0,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
@@ -1807,15 +1191,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "5414ede9",
+   "id": "c4de0af3",
    "name": "E2_duplicated",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "7ac112db",
+      "id_a": "e36bc49b",
       "name_a": "E1_duplicated",
-      "id_b": "5414ede9",
+      "id_b": "c4de0af3",
       "name_b": "E2_duplicated",
       "similarity": 1.0,
       "matching_chunks": [
@@ -1832,8 +1216,8 @@
    "overall_flagged": true
   },
   {
-   "filename": "F_inconsistent_01_Lucas_Martin.pdf",
-   "visible_text_preview": "Lucas Martin\nDenver, CO | lucas.martin@example.com\nSUMMARY\n8 years of professional experience building backend and data systems.\nEXPERIENCE\nFrontend Engineer \u2014 Brightline Systems | 2023\u20132026\n(cid:127) Built production services used by internal teams; improved reliability and reduced recurring operational wor\n(cid:127) Designed APIs, automated tests, and observability workflows across a multi-service environment.\nEDUCATION\nState University \u2014 B.S. Computer Science, graduated 2024\nSKILLS\nPython, PyTorch, SQL, GCP",
+   "filename": "E_duplicate_02_1_Jordan_Blake.pdf",
+   "visible_text_preview": "Jordan Blake\nNew York, NY | jordan.blake@example.com\nSUMMARY\nData Engineer with experience building reliable software and data products in collaborative engineering teams.\nEXPERIENCE\nData Engineer \u2014 Northstar Payments | 2022\u20132026\n(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl\n(cid:127) Created a replay tool used by on-call engineers to reproduce production payment incidents without touching c\nSoftware Engineer \u2014 River Labs | 2020\u20132022\n(cid:127) Built internal APIs and automated integration tests for financial reporting workflows.\n(cid:127) Maintained CI pipelines and production alerts for a small platform team.\nEDUCATION",
    "ocr_used": false,
    "injection": {
     "flagged": false,
@@ -1842,13 +1226,24 @@
     "high_confidence": 0
    },
    "consistency": {
-    "flagged": false,
-    "flags": [],
+    "flagged": true,
+    "flags": [
+     {
+      "type": "overlapping_roles",
+      "severity": "medium",
+      "detail": "Two work-history ranges overlap for about 12 months: '2022\u20132026' and '2020\u20132022'.",
+      "evidence": [
+       "2022\u20132026",
+       "2020\u20132022"
+      ]
+     }
+    ],
     "extracted": {
-     "graduation_year": 2026,
+     "graduation_year": 2022,
      "claimed_years_experience": null,
      "date_ranges_found": [
-      "2023\u20132026"
+      "2022\u20132026",
+      "2020\u20132022"
      ]
     }
    },
@@ -1856,48 +1251,20 @@
     "claims": {
      "email_domain": "example.com",
      "phone_area_code": null,
-     "location": "Martin\nDenver, CO",
+     "location": "New York, NY",
      "employers": []
     },
     "checks": [
      {
-      "check": "Employer: SUMMARY (2023-01-01 -- 2026-12-01)",
+      "check": "Employer: Data Engineer (2022-01-01 -- 2026-12-01)",
       "category": "employer",
       "status": "corroborated",
-      "score": 1.0,
-      "flags": [],
+      "score": 0.8,
+      "flags": [
+       "no_registry_hit"
+      ],
       "detail": "Independent public evidence corroborates this employer.",
       "evidence": [
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/529900XS4PPKBG7LXI26",
-        "detail": "Legal entity: Summary GmbH (status=ACTIVE, LEI 529900XS4PPKBG7LXI26)",
-        "weight": 0.4
-       },
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/529900XGZ1YI5AQSGB92",
-        "detail": "Legal entity: SUMMARY AG (status=ACTIVE, LEI 529900XGZ1YI5AQSGB92)",
-        "weight": 0.4
-       },
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/5299003H6L6WD9AYNY40",
-        "detail": "Legal entity: SUMMARY Service GmbH (status=ACTIVE, LEI 5299003H6L6WD9AYNY40)",
-        "weight": 0.4
-       },
-       {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/984500A7DOE1AEF8R053",
-        "detail": "Legal entity: The Summary Executive Properties LLC (status=ACTIVE, LEI 984500A7DOE1AEF8R053)",
-        "weight": 0.4
-       },
-       {
-        "source": "registry",
-        "url": null,
-        "detail": "Legal entity corroborated in a public registry",
-        "weight": 0.0
-       },
        {
         "source": "DNS",
         "url": null,
@@ -1932,7 +1299,7 @@
     "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
    },
    "verification_questions": [
-    "Pick one project on your resume: what was the hardest problem, what did you personally change, and how did you verify the result?"
+    "You mention: '(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl'. What was your specific contribution, and what was one technical decision you personally made?"
    ],
    "link_intel": {
     "links": [
@@ -1951,39 +1318,39 @@
      }
     ],
     "company_domains": {
-     "Denver": "example.com"
+     "New York": "example.com"
     },
     "summary": {
      "total": 1,
      "live": 1,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
       "portfolio": 1,
-      "other": 0,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
    "signal": {
-    "summary": "Resume signals a primarily Builder, Scaler profile based on 4 observable action verbs.",
+    "summary": "Resume signals a primarily Builder, Operator profile based on 4 observable action verbs.",
     "archetypes": [
      {
       "name": "Builder",
-      "score": 0.17,
+      "score": 0.25,
       "evidence": [
-       "rightline systems | 2023\u20132026 (cid:127) built production services used by internal te",
-       "ced recurring operational wor (cid:127) designed apis, automated tests, and observabilit"
+       "orthstar payments | 2022\u20132026 (cid:127) built the atlas reconciliation pipeline that",
+       "neer \u2014 river labs | 2020\u20132022 (cid:127) built internal apis and automated integration",
+       "a topics and identifies settl (cid:127) created a replay tool used by on-call engineers"
       ]
      },
      {
-      "name": "Scaler",
-      "score": 0.17,
+      "name": "Operator",
+      "score": 0.08,
       "evidence": [
-       "uction services used by internal teams; improved reliability and reduced recurring opera",
-       "nternal teams; improved reliability and reduced recurring operational wor (cid:127) des"
+       "inancial reporting workflows. (cid:127) maintained ci pipelines and production alerts for"
       ]
      }
     ],
@@ -1997,17 +1364,43 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "06680fc4",
-   "name": "F_inconsistent_01_Lucas_Martin",
+   "id": "70ece2a2",
+   "name": "E_duplicate_02_1_Jordan_Blake",
    "duplication": {
-    "flagged": false,
-    "matches": []
+    "flagged": true,
+    "matches": [
+     {
+      "id_a": "70ece2a2",
+      "name_a": "E_duplicate_02_1_Jordan_Blake",
+      "id_b": "7a3f7672",
+      "name_b": "E_duplicate_02_2_Jordan_Reed",
+      "similarity": 1.0,
+      "matching_chunks": [
+       {
+        "chunk_a": "data engineer with experience building reliable software and data products in collaborative engineering teams.",
+        "chunk_b": "data engineer with experience building reliable software and data products in collaborative engineering teams.",
+        "similarity": 1.0
+       },
+       {
+        "chunk_a": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
+        "chunk_b": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
+        "similarity": 1.0
+       },
+       {
+        "chunk_a": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
+        "chunk_b": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
+        "similarity": 1.0
+       }
+      ],
+      "evidence_type": "distinctive section reuse"
+     }
+    ]
    },
-   "overall_flagged": false
+   "overall_flagged": true
   },
   {
-   "filename": "F_inconsistent_timeline.docx",
-   "visible_text_preview": "Drew Sanders\nSenior Director of Engineering\nExperience:\nSenior Director of Engineering, Global Systems Inc (2018 - Present)\n7 years experience leading platform engineering teams at scale, with deep expertise across distributed systems and cloud infrastructure.\nEducation: B.S. Computer Science, Metro University, graduated 2024",
+   "filename": "E_duplicate_02_2_Jordan_Reed.pdf",
+   "visible_text_preview": "Jordan Reed\nAustin, TX | jordan.reed@example.com\nSUMMARY\nData Engineer with experience building reliable software and data products in collaborative engineering teams.\nEXPERIENCE\nData Engineer \u2014 Northstar Payments | 2022\u20132026\n(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl\n(cid:127) Created a replay tool used by on-call engineers to reproduce production payment incidents without touching c\nSoftware Engineer \u2014 River Labs | 2020\u20132022\n(cid:127) Built internal APIs and automated integration tests for financial reporting workflows.\n(cid:127) Maintained CI pipelines and production alerts for a small platform team.\nEDUCATION\nSta",
    "ocr_used": false,
    "injection": {
     "flagged": false,
@@ -2016,45 +1409,62 @@
     "high_confidence": 0
    },
    "consistency": {
-    "flagged": false,
-    "flags": [],
+    "flagged": true,
+    "flags": [
+     {
+      "type": "overlapping_roles",
+      "severity": "medium",
+      "detail": "Two work-history ranges overlap for about 12 months: '2022\u20132026' and '2020\u20132022'.",
+      "evidence": [
+       "2022\u20132026",
+       "2020\u20132022"
+      ]
+     }
+    ],
     "extracted": {
-     "graduation_year": 2018,
-     "claimed_years_experience": 7,
+     "graduation_year": 2022,
+     "claimed_years_experience": null,
      "date_ranges_found": [
-      "2018 - Present"
+      "2022\u20132026",
+      "2020\u20132022"
      ]
     }
    },
    "authenticity": {
     "claims": {
-     "email_domain": null,
+     "email_domain": "example.com",
      "phone_area_code": null,
-     "location": null,
+     "location": "Reed\nAustin, TX",
      "employers": []
     },
     "checks": [
      {
-      "check": "Employer: Senior Director (2018-01-01 -- present)",
+      "check": "Employer: Data Engineer (2022-01-01 -- 2026-12-01)",
       "category": "employer",
       "status": "corroborated",
       "score": 0.8,
       "flags": [
-       "no_domain_found"
+       "no_registry_hit"
       ],
       "detail": "Independent public evidence corroborates this employer.",
       "evidence": [
        {
-        "source": "GLEIF",
-        "url": "https://search.gleif.org/#/record/2138009YMJEDCEAQOE93",
-        "detail": "Legal entity: DENHAY FARMS DIRECTOR & SENIOR EXECUTIVES PENSION SCHEME (status=ACTIVE, LEI 2138009YMJEDCEAQOE93)",
-        "weight": 0.4
+        "source": "DNS",
+        "url": null,
+        "detail": "example.com has mail (MX) records",
+        "weight": 0.1
        },
        {
-        "source": "registry",
-        "url": null,
-        "detail": "Legal entity corroborated in a public registry",
-        "weight": 0.0
+        "source": "RDAP",
+        "url": "https://rdap.org/domain/example.com",
+        "detail": "Domain registered 1995-08-14 (predates claim)",
+        "weight": 0.15
+       },
+       {
+        "source": "Wayback",
+        "url": "http://web.archive.org/web/*/example.com",
+        "detail": "Archived since 2002-01-20",
+        "weight": 0.15
        }
       ]
      }
@@ -2072,73 +1482,132 @@
     "principle": "Employers are checked against GLEIF (global registry), RDAP (domain registration), the Wayback Machine (web history), and DNS (mail liveness). 'Unverified' means evidence was insufficient, not that the claim is false."
    },
    "verification_questions": [
-    "Pick one project on your resume: what was the hardest problem, what did you personally change, and how did you verify the result?"
+    "You mention: '(cid:127) Built the Atlas reconciliation pipeline that joins payment events from six Kafka topics and identifies settl'. What was your specific contribution, and what was one technical decision you personally made?"
    ],
    "link_intel": {
-    "links": [],
-    "company_domains": {},
+    "links": [
+     {
+      "url": "https://example.com",
+      "category": "portfolio",
+      "label": "Portfolio",
+      "live": true,
+      "status_code": 200,
+      "title": "Example Domain",
+      "description": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+      "redirect_target": null,
+      "tech_stack": [],
+      "github_meta": null,
+      "error": null
+     }
+    ],
+    "company_domains": {
+     "Austin": "example.com"
+    },
     "summary": {
-     "total": 0,
-     "live": 0,
+     "total": 1,
+     "live": 1,
      "dead": 0,
      "by_category": {
-      "linkedin": 0,
+      "github": 0,
       "contact": 0,
-      "portfolio": 0,
-      "other": 0,
+      "portfolio": 1,
       "writing": 0,
-      "github": 0
+      "other": 0,
+      "linkedin": 0
      }
     }
    },
    "signal": {
-    "summary": "Insufficient action verbs to characterise a profile archetype.",
-    "archetypes": [],
-    "notable": [],
+    "summary": "Resume signals a primarily Builder, Operator profile based on 4 observable action verbs.",
+    "archetypes": [
+     {
+      "name": "Builder",
+      "score": 0.25,
+      "evidence": [
+       "orthstar payments | 2022\u20132026 (cid:127) built the atlas reconciliation pipeline that",
+       "neer \u2014 river labs | 2020\u20132022 (cid:127) built internal apis and automated integration",
+       "a topics and identifies settl (cid:127) created a replay tool used by on-call engineers"
+      ]
+     },
+     {
+      "name": "Operator",
+      "score": 0.08,
+      "evidence": [
+       "inancial reporting workflows. (cid:127) maintained ci pipelines and production alerts for"
+      ]
+     }
+    ],
+    "notable": [
+     "1 live portfolio link(s) verified."
+    ],
     "gaps": [
-     "No external links (portfolio, GitHub, or writing) found.",
-     "No quantified impact claims -- bullets describe tasks, not outcomes.",
-     "No project or shipping verbs found."
+     "No quantified impact claims -- bullets describe tasks, not outcomes."
     ],
     "confidence": "low",
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "3fdf3857",
-   "name": "F_inconsistent_timeline",
+   "id": "7a3f7672",
+   "name": "E_duplicate_02_2_Jordan_Reed",
    "duplication": {
-    "flagged": false,
-    "matches": []
+    "flagged": true,
+    "matches": [
+     {
+      "id_a": "70ece2a2",
+      "name_a": "E_duplicate_02_1_Jordan_Blake",
+      "id_b": "7a3f7672",
+      "name_b": "E_duplicate_02_2_Jordan_Reed",
+      "similarity": 1.0,
+      "matching_chunks": [
+       {
+        "chunk_a": "data engineer with experience building reliable software and data products in collaborative engineering teams.",
+        "chunk_b": "data engineer with experience building reliable software and data products in collaborative engineering teams.",
+        "similarity": 1.0
+       },
+       {
+        "chunk_a": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
+        "chunk_b": "cid 127 built the atlas reconciliation pipeline that joins payment events from six kafka topics and identifies settl",
+        "similarity": 1.0
+       },
+       {
+        "chunk_a": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
+        "chunk_b": "cid 127 created a replay tool used by on-call engineers to reproduce production payment incidents without touching c",
+        "similarity": 1.0
+       }
+      ],
+      "evidence_type": "distinctive section reuse"
+     }
+    ]
    },
-   "overall_flagged": false
+   "overall_flagged": true
   }
  ],
  "duplicate_pairs": [
   {
-   "id_a": "127fc7b2",
-   "name_a": "A_clean_01_Ava_Rodriguez",
-   "id_b": "64fe2a65",
-   "name_b": "C_standalone_fabrication_01_Sofia_Nguyen",
+   "id_a": "e36bc49b",
+   "name_a": "E1_duplicated",
+   "id_b": "c4de0af3",
+   "name_b": "E2_duplicated",
    "similarity": 1.0,
    "matching_chunks": [
     {
-     "chunk_a": "software engineer with experience building reliable software and data products in collaborative engineering te",
-     "chunk_b": "software engineer with experience building reliable software and data products in collaborative engineering te",
+     "chunk_a": "alex built a scalable microservices platform serving 10 million daily active users led a cross-functional team of 12 engineers and reduced infrastructure costs by 40 through a full migration to kubernetes.",
+     "chunk_b": "alex built a scalable microservices platform serving 10 million daily active users led a cross-functional team of 12 engineers and reduced infrastructure costs by 40 through a full migration to kubernetes.",
      "similarity": 1.0
     }
    ],
    "evidence_type": "distinctive section reuse"
   },
   {
-   "id_a": "471dfd88",
-   "name_a": "E_duplicate_01_1_Riley_Morgan",
-   "id_b": "5de96295",
-   "name_b": "E_duplicate_01_2_Riley_Stone",
+   "id_a": "70ece2a2",
+   "name_a": "E_duplicate_02_1_Jordan_Blake",
+   "id_b": "7a3f7672",
+   "name_b": "E_duplicate_02_2_Jordan_Reed",
    "similarity": 1.0,
    "matching_chunks": [
     {
-     "chunk_a": "product engineer with experience building reliable software and data products in collaborative engineering tea",
-     "chunk_b": "product engineer with experience building reliable software and data products in collaborative engineering tea",
+     "chunk_a": "data engineer with experience building reliable software and data products in collaborative engineering teams.",
+     "chunk_b": "data engineer with experience building reliable software and data products in collaborative engineering teams.",
      "similarity": 1.0
     },
     {
@@ -2153,37 +1622,19 @@
     }
    ],
    "evidence_type": "distinctive section reuse"
-  },
-  {
-   "id_a": "7ac112db",
-   "name_a": "E1_duplicated",
-   "id_b": "5414ede9",
-   "name_b": "E2_duplicated",
-   "similarity": 1.0,
-   "matching_chunks": [
-    {
-     "chunk_a": "alex built a scalable microservices platform serving 10 million daily active users led a cross-functional team of 12 engineers and reduced infrastructure costs by 40 through a full migration to kubernetes.",
-     "chunk_b": "alex built a scalable microservices platform serving 10 million daily active users led a cross-functional team of 12 engineers and reduced infrastructure costs by 40 through a full migration to kubernetes.",
-     "similarity": 1.0
-    }
-   ],
-   "evidence_type": "distinctive section reuse"
   }
  ],
  "demo": true,
  "files": [
-  "A_clean_01_Ava_Rodriguez.pdf",
   "A_clean_real.docx",
-  "B_ai_polished_01_Mia_Patel.pdf",
+  "A_clean_03_Noah_Williams.pdf",
+  "A_clean_04_Mia_Patel.pdf",
   "B_ai_polished_legit.docx",
-  "C_standalone_fabrication_01_Sofia_Nguyen.pdf",
-  "D_injection_01_Liam_Chen.pdf",
+  "A_clean_05_Ethan_Brooks.pdf",
   "D_injected.docx",
-  "E_duplicate_01_1_Riley_Morgan.pdf",
-  "E_duplicate_01_2_Riley_Stone.pdf",
   "E1_duplicated.docx",
   "E2_duplicated.docx",
-  "F_inconsistent_01_Lucas_Martin.pdf",
-  "F_inconsistent_timeline.docx"
+  "E_duplicate_02_1_Jordan_Blake.pdf",
+  "E_duplicate_02_2_Jordan_Reed.pdf"
  ]
 }
