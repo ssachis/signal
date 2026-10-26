@@ -556,7 +556,9 @@
     const info = document.querySelector(".upload-info");
     info.querySelector("h3").textContent = "Try the sample batch";
     info.querySelector("p").innerHTML = "<b>Demo mode.</b> This hosted copy shows Signal’s real results on a batch of 10 sample resumes: clean ones, an AI-polished one that should pass, a hidden prompt injection and two duplicate submissions. To check your own files, run Signal locally (see the README).";
-    document.querySelector(".file-input-wrapper").innerHTML = '<span class="file-name-preview">10 sample resumes ready</span>';
+    const picker = document.querySelector(".file-input-wrapper");
+    picker.classList.add("hidden");
+    picker.insertAdjacentHTML("afterend", '<span class="file-name-preview">10 sample resumes ready</span>');
     document.getElementById("analyzeBtn").lastChild.textContent = " Analyze sample batch";
     document.querySelector(".jd-card")?.classList.add("hidden");
   }
