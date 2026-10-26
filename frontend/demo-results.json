@@ -110,12 +110,12 @@
      "live": 1,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 1,
       "other": 0,
-      "portfolio": 1
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -149,15 +149,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "e52302da",
+   "id": "127fc7b2",
    "name": "A_clean_01_Ava_Rodriguez",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "e52302da",
+      "id_a": "127fc7b2",
       "name_a": "A_clean_01_Ava_Rodriguez",
-      "id_b": "262e8cc4",
+      "id_b": "64fe2a65",
       "name_b": "C_standalone_fabrication_01_Sofia_Nguyen",
       "similarity": 1.0,
       "matching_chunks": [
@@ -272,12 +272,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 0,
       "other": 0,
-      "portfolio": 0
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -302,7 +302,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "45e0171f",
+   "id": "08ed5b51",
    "name": "A_clean_real",
    "duplication": {
     "flagged": false,
@@ -443,12 +443,12 @@
      "live": 1,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 1,
       "other": 0,
-      "portfolio": 1
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -482,7 +482,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "15ae7031",
+   "id": "55d5bf42",
    "name": "B_ai_polished_01_Mia_Patel",
    "duplication": {
     "flagged": false,
@@ -573,12 +573,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 0,
       "other": 0,
-      "portfolio": 0
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -610,7 +610,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "03b5b2fa",
+   "id": "d67d1997",
    "name": "B_ai_polished_legit",
    "duplication": {
     "flagged": false,
@@ -739,12 +739,12 @@
      "live": 1,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 1,
       "other": 0,
-      "portfolio": 1
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -784,15 +784,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "262e8cc4",
+   "id": "64fe2a65",
    "name": "C_standalone_fabrication_01_Sofia_Nguyen",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "e52302da",
+      "id_a": "127fc7b2",
       "name_a": "A_clean_01_Ava_Rodriguez",
-      "id_b": "262e8cc4",
+      "id_b": "64fe2a65",
       "name_b": "C_standalone_fabrication_01_Sofia_Nguyen",
       "similarity": 1.0,
       "matching_chunks": [
@@ -907,12 +907,12 @@
      "live": 1,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 1,
       "other": 0,
-      "portfolio": 1
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -946,7 +946,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "7c36cdbd",
+   "id": "de2e3c56",
    "name": "D_injection_01_Liam_Chen",
    "duplication": {
     "flagged": false,
@@ -1040,12 +1040,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 0,
       "other": 0,
-      "portfolio": 0
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -1077,7 +1077,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "9af30d27",
+   "id": "98f01322",
    "name": "D_injected",
    "duplication": {
     "flagged": false,
@@ -1195,12 +1195,12 @@
      "live": 1,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 1,
       "other": 0,
-      "portfolio": 1
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -1234,15 +1234,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "21c56bdb",
+   "id": "471dfd88",
    "name": "E_duplicate_01_1_Riley_Morgan",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "21c56bdb",
+      "id_a": "471dfd88",
       "name_a": "E_duplicate_01_1_Riley_Morgan",
-      "id_b": "ce02f526",
+      "id_b": "5de96295",
       "name_b": "E_duplicate_01_2_Riley_Stone",
       "similarity": 1.0,
       "matching_chunks": [
@@ -1378,12 +1378,12 @@
      "live": 1,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 1,
       "other": 0,
-      "portfolio": 1
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -1417,15 +1417,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "ce02f526",
+   "id": "5de96295",
    "name": "E_duplicate_01_2_Riley_Stone",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "21c56bdb",
+      "id_a": "471dfd88",
       "name_a": "E_duplicate_01_1_Riley_Morgan",
-      "id_b": "ce02f526",
+      "id_b": "5de96295",
       "name_b": "E_duplicate_01_2_Riley_Stone",
       "similarity": 1.0,
       "matching_chunks": [
@@ -1573,12 +1573,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 0,
       "other": 0,
-      "portfolio": 0
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -1617,15 +1617,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "6591d274",
+   "id": "7ac112db",
    "name": "E1_duplicated",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "6591d274",
+      "id_a": "7ac112db",
       "name_a": "E1_duplicated",
-      "id_b": "ba6f9e60",
+      "id_b": "5414ede9",
       "name_b": "E2_duplicated",
       "similarity": 1.0,
       "matching_chunks": [
@@ -1763,12 +1763,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 0,
       "other": 0,
-      "portfolio": 0
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -1807,15 +1807,15 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "ba6f9e60",
+   "id": "5414ede9",
    "name": "E2_duplicated",
    "duplication": {
     "flagged": true,
     "matches": [
      {
-      "id_a": "6591d274",
+      "id_a": "7ac112db",
       "name_a": "E1_duplicated",
-      "id_b": "ba6f9e60",
+      "id_b": "5414ede9",
       "name_b": "E2_duplicated",
       "similarity": 1.0,
       "matching_chunks": [
@@ -1958,12 +1958,12 @@
      "live": 1,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 1,
       "other": 0,
-      "portfolio": 1
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -1997,7 +1997,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "c02e9ad7",
+   "id": "06680fc4",
    "name": "F_inconsistent_01_Lucas_Martin",
    "duplication": {
     "flagged": false,
@@ -2082,12 +2082,12 @@
      "live": 0,
      "dead": 0,
      "by_category": {
-      "contact": 0,
-      "writing": 0,
-      "github": 0,
       "linkedin": 0,
+      "contact": 0,
+      "portfolio": 0,
       "other": 0,
-      "portfolio": 0
+      "writing": 0,
+      "github": 0
      }
     }
    },
@@ -2104,7 +2104,7 @@
     "mode": "heuristic",
     "disclaimer": "Signal describes observable artefacts in the resume text. It does not assess personality, character, or suitability. Treat as a reading aid, not a hiring criterion."
    },
-   "id": "2aa31fc6",
+   "id": "3fdf3857",
    "name": "F_inconsistent_timeline",
    "duplication": {
     "flagged": false,
@@ -2115,9 +2115,9 @@
  ],
  "duplicate_pairs": [
   {
-   "id_a": "e52302da",
+   "id_a": "127fc7b2",
    "name_a": "A_clean_01_Ava_Rodriguez",
-   "id_b": "262e8cc4",
+   "id_b": "64fe2a65",
    "name_b": "C_standalone_fabrication_01_Sofia_Nguyen",
    "similarity": 1.0,
    "matching_chunks": [
@@ -2130,9 +2130,9 @@
    "evidence_type": "distinctive section reuse"
   },
   {
-   "id_a": "21c56bdb",
+   "id_a": "471dfd88",
    "name_a": "E_duplicate_01_1_Riley_Morgan",
-   "id_b": "ce02f526",
+   "id_b": "5de96295",
    "name_b": "E_duplicate_01_2_Riley_Stone",
    "similarity": 1.0,
    "matching_chunks": [
@@ -2155,9 +2155,9 @@
    "evidence_type": "distinctive section reuse"
   },
   {
-   "id_a": "6591d274",
+   "id_a": "7ac112db",
    "name_a": "E1_duplicated",
-   "id_b": "ba6f9e60",
+   "id_b": "5414ede9",
    "name_b": "E2_duplicated",
    "similarity": 1.0,
    "matching_chunks": [
