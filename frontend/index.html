@@ -547,6 +547,19 @@
 
 <script>
   const API_BASE = "http://localhost:8000";
+  // Demo mode: on a hosted copy (like GitHub Pages) there is no analysis server, so the page shows
+  // Signal's real results for a fixed sample batch (demo-results.json, made by demo/run_demo.py).
+  // Run locally to analyze your own files. Force it with ?demo=1, turn it off with ?demo=0.
+  const demoParam = new URLSearchParams(location.search).get("demo");
+  const DEMO = demoParam === "1" || (demoParam !== "0" && !["localhost", "127.0.0.1", ""].includes(location.hostname));
+  if (DEMO) {
+    const info = document.querySelector(".upload-info");
+    info.querySelector("h3").textContent = "Try the sample batch";
+    info.querySelector("p").innerHTML = "<b>Demo mode.</b> This hosted copy shows Signal’s real results on 13 sample resumes: clean, AI-polished, fabricated employers, hidden injections, duplicates and broken timelines. To check your own files, run Signal locally (see the README).";
+    document.querySelector(".file-input-wrapper").innerHTML = '<span class="file-name-preview">13 sample resumes ready</span>';
+    document.getElementById("analyzeBtn").lastChild.textContent = " Analyze sample batch";
+    document.querySelector(".jd-card")?.classList.add("hidden");
+  }
 
   const fileInput = document.getElementById("fileInput");
   const filePreview = document.getElementById("filePreview");
@@ -560,6 +573,20 @@
   });
 
   document.getElementById("analyzeBtn").addEventListener("click", async () => {
+    if (DEMO) {
+      const btn = document.getElementById("analyzeBtn"), label = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Analyzing...`;
+      try {
+        const [res] = await Promise.all([fetch("demo-results.json"), new Promise(r => setTimeout(r, 1200))]);
+        render(await res.json());
+      } catch (e) {
+        alert("Couldn’t load the sample results.\n" + e);
+      } finally {
+        btn.disabled = false; btn.innerHTML = label;
+      }
+      return;
+    }
     const input = document.getElementById("fileInput");
     if (!input.files.length) {
       alert("Choose one or more resume files first.");

@@ -1,0 +1,25 @@
+name: Refresh demo results
+# Runs Signal on the demo batch (it needs the internet for employer and link checks)
+# and saves frontend/demo-results.json, which the GitHub Pages demo shows.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['demo/run_demo.py', 'backend/**', '.github/workflows/demo-results.yml']
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install -q pdfplumber python-docx scikit-learn httpx dnspython rapidfuzz python-dotenv
+      - run: python demo/run_demo.py 2>&1 | tee demo/last-run.txt
+      - name: Save results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add frontend/demo-results.json demo/last-run.txt
+          git diff --cached --quiet || (git commit -m "Demo results" && git push)

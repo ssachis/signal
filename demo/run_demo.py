@@ -1,0 +1,49 @@
+"""Run Signal on the demo batch and save the results the page shows in demo mode.
+
+Same steps as POST /analyze-batch in backend/main.py, without the web server.
+Run from the repo root:  python demo/run_demo.py
+"""
+import asyncio, json, os, sys, uuid
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'backend'))
+from detectors_v3 import analyze_single_resume_async, find_duplicates  # noqa: E402
+
+BATCH = [
+    'A_clean_01_Ava_Rodriguez.pdf', 'A_clean_real.docx',
+    'B_ai_polished_01_Mia_Patel.pdf', 'B_ai_polished_legit.docx',
+    'C_standalone_fabrication_01_Sofia_Nguyen.pdf',
+    'D_injection_01_Liam_Chen.pdf', 'D_injected.docx',
+    'E_duplicate_01_1_Riley_Morgan.pdf', 'E_duplicate_01_2_Riley_Stone.pdf',
+    'E1_duplicated.docx', 'E2_duplicated.docx',
+    'F_inconsistent_01_Lucas_Martin.pdf', 'F_inconsistent_timeline.docx',
+]
+SRC = os.path.join(os.path.dirname(__file__), '..', 'sample_resumes')
+OUT = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'demo-results.json')
+
+
+async def main():
+    raw = [(open(os.path.join(SRC, n), 'rb').read(), n) for n in BATCH]
+    results = list(await asyncio.gather(*[analyze_single_resume_async(d, n, None) for d, n in raw]))
+    for r in results:
+        r['id'] = str(uuid.uuid4())[:8]
+        r['name'] = r['filename'].rsplit('.', 1)[0]
+    pairs = find_duplicates([{'id': r['id'], 'name': r['name'], 'text': r['full_text']} for r in results])
+    by = {}
+    for p in pairs:
+        by.setdefault(p['id_a'], []).append(p)
+        by.setdefault(p['id_b'], []).append(p)
+    for r in results:
+        r['duplication'] = {'flagged': r['id'] in by, 'matches': by.get(r['id'], [])}
+        r['overall_flagged'] = (r['injection']['flagged'] or r['duplication']['flagged']
+                                or r['consistency']['flagged'] or r['authenticity']['summary']['discrepancy'] > 0)
+        r.pop('full_text', None)
+    data = {'count': len(results), 'resumes': results, 'duplicate_pairs': pairs, 'demo': True,
+            'files': BATCH}
+    with open(OUT, 'w') as f:
+        json.dump(data, f, indent=1, default=str)
+    for r in results:
+        print(f"{r['filename']:48s} flagged={r['overall_flagged']} inj={r['injection']['flagged']} "
+              f"dup={r['duplication']['flagged']} con={r['consistency']['flagged']} "
+              f"employer_discrepancy={r['authenticity']['summary']['discrepancy']}")
+
+asyncio.run(main())
